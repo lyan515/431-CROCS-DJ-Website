@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @gig_request.name
+%p
+  %strong Address:
+  = @gig_request.address
+%p
+  %strong Phone:
+  = @gig_request.phone
+%p
+  %strong Email:
+  = @gig_request.email
+%p
+  %strong Gig date:
+  = @gig_request.gig_date
+%p
+  %strong Gig time:
+  = @gig_request.gig_time
+= link_to 'Edit', edit_gig_request_path(@gig_request)
+|
+= link_to 'Back', gig_requests_path
