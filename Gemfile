@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'cucumber-rails', :require => false
 
+# This is for google authentication
+gem "omniauth-google-oauth2", "~> 0.2.1"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

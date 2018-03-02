@@ -1,5 +1,5 @@
 %p#notice= notice
-%h1 Listing Gig Requests
+%h1 Listing Gig Requests asdf
 %table
   %thead
     %tr
@@ -18,7 +18,7 @@
         %td= gig_request.phone
         %td= gig_request.email
         %td= gig_request.gig_date
-        %td= gig_request.gig_time
+        %td= gig_request.gig_time.strftime("%I:%m %p")
         %td= link_to 'Show', gig_request
         %td= link_to 'Edit', edit_gig_request_path(gig_request)
         %td= link_to 'Destroy', gig_request, method: :delete, data: { confirm: 'Are you sure?' }
