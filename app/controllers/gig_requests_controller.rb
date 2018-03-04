@@ -4,7 +4,13 @@ class GigRequestsController < ApplicationController
   # GET /gig_requests
   # GET /gig_requests.json
   def index
+    #if !current_user
+    #  redirect_to root_path
+    #elsif !valid_user
+    #  redirect_to root_path
+    #else
     @gig_requests = GigRequest.all
+    #end
   end
 
   # GET /gig_requests/1

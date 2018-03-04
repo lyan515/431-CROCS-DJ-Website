@@ -1,5 +1,7 @@
 %h1 Editing Gig Request
 = render 'form'
-= link_to 'Show', @gig_request
 |
-= link_to 'Back', gig_requests_path
+-if current_user && valid_user
+  = render 'show_admin'
+-else
+  = render 'show_user'

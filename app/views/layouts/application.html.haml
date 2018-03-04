@@ -7,11 +7,26 @@
     = csrf_meta_tags
 
   %body
+    %div
+      - if current_user
+        - if valid_user
+          Signed in as Admin
+          = link_to "Sign out", signout_path, id: "sign_out"
+          = link_to "Admin Page", gig_requests_path 
+        - else
+          = link_to "Not an Admin: Please log in as an Admin", "/auth/google_oauth2", id: "sign_in"
+      - else
+        = link_to "Admin Login", "/auth/google_oauth2", id: "sign_in"
+    %div
+    
+  
+    
     %h1.title DJ's of Aggieland
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
         #warning.message= flash[:warning]
+        
 
       = yield

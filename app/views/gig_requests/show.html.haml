@@ -1,4 +1,5 @@
-%p#notice= notice
+//%p#notice= notice
+
 %p
   %strong Name:
   = @gig_request.name
@@ -16,7 +17,9 @@
   = @gig_request.gig_date
 %p
   %strong Gig time:
-  = @gig_request.gig_time
-= link_to 'Edit', edit_gig_request_path(@gig_request)
-|
-= link_to 'Back', gig_requests_path
+  = @gig_request.gig_time.strftime("%I:%m %p")
+  
+-if current_user && valid_user
+  = render 'show_admin'
+-else
+  = render 'show_user'
