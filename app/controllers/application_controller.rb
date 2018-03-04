@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
   
   def valid_user
-    if @current_user.uid == "118251766435546532160" || @current_user.uid == "100182614235668421671" || @current_user.uid == "118156090178399458711"
+    if @current_user.uid == "113054678615933156222"
       @current_user
     end
     
