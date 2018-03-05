@@ -7,11 +7,11 @@
   / header
   %ul.nav.nav-pills
     %li.active
-      %a{:href => "/"} Home
+      %a= link_to "Home", root_path
     %li
-      %a{:href => "calendar.html"} Calendar
+      %a= link_to "Calendar", welcome_calendar_path
     %li
-      %a{:href => "gig_requests/new"} Request a DJ
+      %a= link_to "Request a DJ", gig_requests_path
   %p
     Page contents
   /

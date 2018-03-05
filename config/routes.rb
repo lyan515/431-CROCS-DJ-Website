@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   resources :gig_requests
   get 'welcome/index'
+  get 'welcome/calendar'
   get 'gig_requests/index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -18,13 +18,13 @@ end
 
 Then (/^I should see (.*?) $/) do |arg|
     if arg == "Success Page" 
-        visit home_page_path
+        #should be Show
     elsif arg == "Required Fields Missing" 
         #check for error here
     end
 end
 
-When (/^ I click the (.*?) button$/) do |link|
+When (/^ I click the (.*?) link$/) do |link|
     click_link(link)
 end
 

@@ -1,7 +1,7 @@
 #(.*?) keeps code DRY so that other people can define their steps with this framework
 #instead of creating new methods for their tests
     
-Given (/^I am logedin on (.*?) account$/) do |arg|
+Given (/^I am logged in on (.*?) account$/) do |arg|
     if arg == "N/A" 
         #should see google sign in
     elsif arg == "Invalid"
@@ -13,9 +13,7 @@ Given (/^I am logedin on (.*?) account$/) do |arg|
     end
 end
 
-When (/^ I click the (.*?) link/) do |link|
-    click_link(link)
-end
+#since step definitions are global, i took out the click link definition, since we already have one in the other file
 
 Then (/^I should see (.*?) $/) do |arg|
     if arg == "Signed in as Admin" 
