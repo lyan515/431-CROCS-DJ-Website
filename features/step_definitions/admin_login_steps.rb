@@ -3,7 +3,7 @@
     
 Given (/^I am logged in on (.*?) account$/) do |arg|
     if arg == "N/A" 
-        #should see google sign in
+         find('input[name="sign_in"]')
     elsif arg == "Invalid"
         #should see "not an Admin: Please log in as an Admin"
     elsif arg == "Valid"
@@ -15,13 +15,6 @@ end
 
 #since step definitions are global, i took out the click link definition, since we already have one in the other file
 
-Then (/^I should see (.*?) $/) do |arg|
-    if arg == "Signed in as Admin" 
-        visit home_page_path
-    elsif arg == "not an Admin: Please log in as an Admin" 
-        #check for error here
-    end
-end
 
 
 

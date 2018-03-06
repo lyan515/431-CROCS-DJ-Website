@@ -1,12 +1,17 @@
 %head
   / needed: home, login, form, admin
-  %title Calendar
+  %title Home
+  /%link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+  / ajax <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 %body
   / header
   %ul.nav.nav-pills
-    %li.active
-      %a{:href => "/"} Home
     %li
-      %a{:href => "gig_requests/new"} Request a DJ
-  %p
-    Page contents
+      %a= link_to "Home", root_path
+    %li.active
+      %a= link_to "Calendar", welcome_calendar_path
+    %li
+      %a= link_to "Request a DJ", new_gig_request_path
+
+    
+  %iframe{:align => "center", :width => "90%", :height => "800px", :name => "Gigs", :src => "https://calendar.google.com/calendar/embed?src=crocs431%40gmail.com&ctz=America%2FChicago"}

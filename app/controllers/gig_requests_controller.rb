@@ -4,13 +4,13 @@ class GigRequestsController < ApplicationController
   # GET /gig_requests
   # GET /gig_requests.json
   def index
-    #if !current_user
-    #  redirect_to root_path
-    #elsif !valid_user
-    #  redirect_to root_path
-    #else
-    @gig_requests = GigRequest.all
-    #end
+    if !current_user#no unauthorized user should be on this page
+      redirect_to root_path
+    elsif !valid_user
+      redirect_to root_path
+    else
+      @gig_requests = GigRequest.all
+    end
   end
 
   # GET /gig_requests/1
@@ -39,6 +39,8 @@ class GigRequestsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @gig_request.errors, status: :unprocessable_entity }
+        #flash[:error] = @gig_request.errors.full_messages[0]
+        #render 'new'
       end
     end
   end
