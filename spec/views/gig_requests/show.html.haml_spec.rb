@@ -6,7 +6,9 @@ RSpec.describe "gig_requests/show", type: :view do
       :name => "Name",
       :address => "Address",
       :phone => "Phone",
-      :email => "Email"
+      :email => "Email",
+      :gig_date => '01-Jan-2000', 
+      :gig_time => '01:00'
     ))
   end
 
@@ -16,5 +18,7 @@ RSpec.describe "gig_requests/show", type: :view do
     expect(rendered).to match(/Address/)
     expect(rendered).to match(/Phone/)
     expect(rendered).to match(/Email/)
+    expect(rendered).to match(/01-Jan-2000/)
+    expect(rendered).to match(/01:00/)
   end
 end

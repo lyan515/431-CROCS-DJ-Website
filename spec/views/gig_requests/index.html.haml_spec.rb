@@ -7,13 +7,17 @@ RSpec.describe "gig_requests/index", type: :view do
         :name => "Name",
         :address => "Address",
         :phone => "Phone",
-        :email => "Email"
+        :email => "MyString",
+        :gig_date => '01-Jan-2000', 
+        :gig_time => '01:00'
       ),
       GigRequest.create!(
         :name => "Name",
         :address => "Address",
         :phone => "Phone",
-        :email => "Email"
+        :email => "MyString",
+        :gig_date => '01-Jan-2000', 
+        :gig_time => '01:00'
       )
     ])
   end
@@ -23,6 +27,6 @@ RSpec.describe "gig_requests/index", type: :view do
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "Address".to_s, :count => 2
     assert_select "tr>td", :text => "Phone".to_s, :count => 2
-    assert_select "tr>td", :text => "Email".to_s, :count => 2
+    assert_select "tr>td", :text => "MyString".to_s, :count => 2
   end
 end

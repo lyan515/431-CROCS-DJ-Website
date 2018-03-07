@@ -24,11 +24,11 @@ RSpec.describe GigRequestsController, type: :controller do
   # GigRequest. As you add validations to GigRequest, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+   {name: "Jahn Smith", address: "111 Juniper Dr", phone: "999-999-9999", email: "john.smith69@gmail.com", gig_date: "2018-01-01", gig_time: "2000-01-01 08:30:00"}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: "Jahn Smith"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -40,7 +40,7 @@ RSpec.describe GigRequestsController, type: :controller do
     it "assigns all gig_requests as @gig_requests" do
       gig_request = GigRequest.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:gig_requests)).to eq([gig_request])
+      expect(assigns(:gig_requests)).to eq(@gig_request)
     end
   end
 
@@ -95,7 +95,7 @@ RSpec.describe GigRequestsController, type: :controller do
 
       it "re-renders the 'new' template" do
         post :create, {:gig_request => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        expect(response).to render_template("index")
       end
     end
   end
@@ -103,14 +103,14 @@ RSpec.describe GigRequestsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: "Jana", address: "121 Juniper Dr", phone: "929-999-9999", email: "jana777@gmail.com", gig_date: "2018-02-01", gig_time: "2000-01-01 08:31:00"}
       }
 
       it "updates the requested gig_request" do
         gig_request = GigRequest.create! valid_attributes
         put :update, {:id => gig_request.to_param, :gig_request => new_attributes}, valid_session
         gig_request.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:gig_request).attributes['name']).to match(new_attributes[:name])
       end
 
       it "assigns the requested gig_request as @gig_request" do
@@ -136,11 +136,11 @@ RSpec.describe GigRequestsController, type: :controller do
       it "re-renders the 'edit' template" do
         gig_request = GigRequest.create! valid_attributes
         put :update, {:id => gig_request.to_param, :gig_request => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
+        expect(response).to render_template("form")
       end
     end
   end
-
+#response.should render_template(:index)
   describe "DELETE #destroy" do
     it "destroys the requested gig_request" do
       gig_request = GigRequest.create! valid_attributes
