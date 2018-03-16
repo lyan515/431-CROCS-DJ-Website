@@ -18,6 +18,9 @@
 %p
   %strong Gig time:
   = @gig_request.gig_time.strftime("%I:%m %p")
+%p
+  %strong Gig duration(In hours):
+  = @gig_request.gig_duration
   
 -if current_user && valid_user
   = render 'show_admin'

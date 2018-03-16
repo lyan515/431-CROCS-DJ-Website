@@ -21,6 +21,7 @@ class GigRequestsController < ApplicationController
   # GET /gig_requests/new
   def new
     @gig_request = GigRequest.new
+    @gig_request.gig_duration = @gig_request.gig_duration.to_i
   end
 
   # GET /gig_requests/1/edit
@@ -77,6 +78,6 @@ class GigRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_request_params
-      params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time)
+      params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time, :gig_duration)
     end
 end

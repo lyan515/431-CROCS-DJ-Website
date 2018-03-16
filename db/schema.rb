@@ -20,8 +20,14 @@ ActiveRecord::Schema.define(version: 20180302192903) do
     t.string   "email"
     t.date     "gig_date"
     t.time     "gig_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "gig_duration"
+    t.boolean  "light_rent"
+    t.boolean  "speaker_rent"
+    t.string   "dj_preferred"
+    t.string   "dj_actual"
+    t.boolean  "approval"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,6 +11,11 @@
       %th Email
       %th Gig date
       %th Gig time
+      %th Gig Duration
+      %th Light Rental
+      %th Speaker Rental
+      %th Preferred DJ
+      %th Approval Status
       %th{:colspan => "4"}
   %tbody
     - @gig_requests.each do |gig_request|
@@ -21,6 +26,11 @@
         %td= gig_request.email
         %td= gig_request.gig_date
         %td= gig_request.gig_time.strftime("%I:%m %p")
+        %td= gig_request.gig_duration
+        %td= gig_request.light_rent
+        %td= gig_request.speaker_rent
+        %td= gig_request.dj_preferred
+        %td= gig_request.approval
         %td= link_to 'Show', gig_request
         %td= link_to 'Edit', edit_gig_request_path(gig_request)
         %td= link_to 'Destroy', gig_request, method: :delete, data: { confirm: 'Are you sure?' }

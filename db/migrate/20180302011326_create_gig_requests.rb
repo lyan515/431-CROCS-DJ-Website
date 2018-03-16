@@ -7,6 +7,12 @@ class CreateGigRequests < ActiveRecord::Migration
       t.string :email
       t.date :gig_date
       t.time :gig_time
+      t.integer :gig_duration
+      t.boolean :light_rent
+      t.boolean :speaker_rent
+      t.string :dj_preferred
+      t.string :dj_actual
+      t.boolean :approval
 
       t.timestamps null: false
     end
