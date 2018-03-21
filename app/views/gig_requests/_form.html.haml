@@ -35,5 +35,17 @@
     = f.label :gig_duration
     %br/
     = f.number_field :gig_duration
+  .field
+    = f.label "Check box if you want to rent a light system."
+    %br/
+    = f.check_box :light_rent
+  .field
+    = f.label "Check box if you want to rent a light system."
+    %br/
+    = f.check_box :speaker_rent
+  .field
+    = f.label "Preferred DJ"
+    %br/
+    = f.text_field :dj_preferred
   .actions
     = f.submit
