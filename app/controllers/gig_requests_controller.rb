@@ -69,6 +69,16 @@ class GigRequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def approve
+    gig_request = GigRequest.find(params[:id])
+    gig_request.approval = true
+    gig_request.save
+  end
+  
+  def deny_gig
+    @gig_request.approval = false
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

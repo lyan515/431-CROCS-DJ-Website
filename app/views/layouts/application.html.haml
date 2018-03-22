@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title DJ's of Aggieland
+    %title DJs of Aggieland
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
@@ -21,7 +21,8 @@
     
   
     
-    %h1.title DJ's of Aggieland
+    %h1.title 
+      = link_to 'DJs of Aggieland', root_path
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]

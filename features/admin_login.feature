@@ -26,3 +26,8 @@ Scenario: I clicked the Admin Page link
 Given I am logged in on "Valid" account
 When I click the "Admin Page" link
 Then I should see "Listing Gig Requests"
+
+Scenario: I clicked the Home page link
+Given I am logged in on "Valid" account
+When I click the "DJs of Aggieland" link
+Then I should see Home

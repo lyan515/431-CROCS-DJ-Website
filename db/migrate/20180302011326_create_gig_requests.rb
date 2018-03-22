@@ -14,6 +14,7 @@ class CreateGigRequests < ActiveRecord::Migration
       t.string :dj_actual
       t.boolean :approval
 
+
       t.timestamps null: false
     end
   end

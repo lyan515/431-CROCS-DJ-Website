@@ -12,8 +12,11 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'welcome/calendar'
   
-  #get gig_request info
+  #get gig_request pages
   get 'gig_requests/index'
+  get 'gig_requests/:id/approve' => 'gig_requests#approve', as: :gig_requests_approve
+  
+  #get approve and 
   
   # google auth gets
   get 'auth/:provider/callback', to: 'sessions#create'
