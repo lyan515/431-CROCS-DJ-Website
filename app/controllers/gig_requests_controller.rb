@@ -16,6 +16,10 @@ class GigRequestsController < ApplicationController
   # GET /gig_requests/1
   # GET /gig_requests/1.json
   def show
+    #we use the hashids gem to create a reversible hash with seed calebWillNeverSeeThis and key params[:id]
+    id = Hashids.new("calebWillNeverSeeThis").decode(params[:id]).try(:first)
+    #then use that hashid to index the gig request
+    @gig_request = GigRequest.find(id)
   end
 
   # GET /gig_requests/new
@@ -71,7 +75,10 @@ class GigRequestsController < ApplicationController
   end
   
   def approve
-    @gig_request = GigRequest.find(params[:id])
+    #we use the hashids gem to create a reversible hash with seed calebWillNeverSeeThis and key params[:id]
+    id = Hashids.new("calebWillNeverSeeThis").decode(params[:id]).try(:first)
+    #then use that hash to index the request. check /models/gig_request.rb for the override.
+    @gig_request = GigRequest.find(id)
     @gig_request.approval = true
     @gig_request.save
   end
@@ -83,7 +90,10 @@ class GigRequestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gig_request
-      @gig_request = GigRequest.find(params[:id])
+      #we use the hashids gem to create a reversible hash with seed calebWillNeverSeeThis and key params[:id]
+      id = Hashids.new("calebWillNeverSeeThis").decode(params[:id]).try(:first)
+      #then use that hash to index the request. check /models/gig_request.rb for the override.
+      @gig_request = GigRequest.find(id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

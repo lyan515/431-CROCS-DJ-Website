@@ -1,4 +1,10 @@
 class GigRequest < ActiveRecord::Base
+     
+     # overrides the id we use to index the request
+     # the seed for this hashid MUST be the same as the seeds in gig_requests_controller.
+     def to_param
+        Hashids.new("calebWillNeverSeeThis").encode(id)
+     end
     
      validates :name, presence: true
      validates :address, presence: true
