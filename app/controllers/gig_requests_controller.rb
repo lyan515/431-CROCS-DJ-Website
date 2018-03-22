@@ -71,9 +71,9 @@ class GigRequestsController < ApplicationController
   end
   
   def approve
-    gig_request = GigRequest.find(params[:id])
-    gig_request.approval = true
-    gig_request.save
+    @gig_request = GigRequest.find(params[:id])
+    @gig_request.approval = true
+    @gig_request.save
   end
   
   def deny_gig
