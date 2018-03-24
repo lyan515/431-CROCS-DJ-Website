@@ -15,6 +15,9 @@ Rails.application.routes.draw do
   #get gig_request pages
   get 'gig_requests/index'
   get 'gig_requests/:id/approve' => 'gig_requests#approve', as: :gig_requests_approve
+  get 'gig_requests/:id/deny' => 'gig_requests#deny', as: :gig_requests_deny
+  get 'gig_requests/:id/show_final' => 'gig_requests#show_client_final', as: :gig_requests_final
+  get 'gig_requests/:id/show_final_approve' => 'gig_requests#show_client_final_approve', as: :gig_requests_final_approve
   
   #get approve and 
   

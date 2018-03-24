@@ -11,15 +11,16 @@ class GigRequestsController < ApplicationController
     else
       @gig_requests = GigRequest.all
     end
+    
+    @sort = params[:sort]
+    @gig_requests = GigRequest.all.order(@sort)
+    
   end
 
   # GET /gig_requests/1
   # GET /gig_requests/1.json
   def show
-    #we use the hashids gem to create a reversible hash with seed calebWillNeverSeeThis and key params[:id]
-    id = Hashids.new("calebWillNeverSeeThis").decode(params[:id]).try(:first)
-    #then use that hashid to index the gig request
-    @gig_request = GigRequest.find(id)
+   set_gig_request
   end
 
   # GET /gig_requests/new
@@ -75,16 +76,26 @@ class GigRequestsController < ApplicationController
   end
   
   def approve
-    #we use the hashids gem to create a reversible hash with seed calebWillNeverSeeThis and key params[:id]
-    id = Hashids.new("calebWillNeverSeeThis").decode(params[:id]).try(:first)
-    #then use that hash to index the request. check /models/gig_request.rb for the override.
-    @gig_request = GigRequest.find(id)
+    set_gig_request
     @gig_request.approval = true
     @gig_request.save
   end
   
-  def deny_gig
+  def deny
+    set_gig_request
     @gig_request.approval = false
+    @gig_request.client_approval = false
+    @gig_request.save
+  end
+  
+  def show_client_final
+    set_gig_request
+  end
+  
+  def show_client_final_approve
+    set_gig_request
+    @gig_request.client_approval = true
+    @gig_request.save
   end
 
   private
@@ -98,6 +109,6 @@ class GigRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_request_params
-      params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time, :gig_duration, :light_rent, :speaker_rent, :dj_preferred, :dj_actual, :approval)
+      params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time, :gig_duration, :light_rent, :speaker_rent, :dj_preferred, :dj_actual, :approval, :client_approval)
     end
 end

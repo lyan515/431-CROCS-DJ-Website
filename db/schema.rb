@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180302192903) do
+ActiveRecord::Schema.define(version: 20180324194018) do
 
   create_table "gig_requests", force: :cascade do |t|
     t.string   "name"
@@ -26,8 +26,9 @@ ActiveRecord::Schema.define(version: 20180302192903) do
     t.string   "dj_preferred"
     t.string   "dj_actual"
     t.boolean  "approval"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.boolean  "client_approval"
   end
 
   create_table "users", force: :cascade do |t|

@@ -12,12 +12,11 @@
       %th Gig time
       %th Gig Duration
       %th Light Rental
-      %th Speaker Rental
+      %th= link_to "Speaker Rental", gig_requests_path(sort:"speaker_rent"), id:"speaker_rent_header"
       %th Preferred DJ
-      %th Approved
-      // %th Admin Approved
-      // %th User Approved
-      %th{:colspan => "4"}
+      %th= link_to "Admin Approved", gig_requests_path(sort:"approval"), id:"approval_header"
+      %th User Approved
+      %th{:colspan => "5"}
   %tbody
     - @gig_requests.each do |gig_request|
       %tr
@@ -32,10 +31,9 @@
         %td= gig_request.speaker_rent
         %td= gig_request.dj_preferred
         %td= gig_request.approval
+        %td= gig_request.client_approval
         %td= link_to 'Show', gig_request
         %td= link_to 'Edit', edit_gig_request_path(gig_request)
-        %td= link_to 'Approve', gig_requests_approve_path(gig_request)
-        // %td= link_to 'Deny', deny_gig(gig_request)
         %td= link_to 'Destroy', gig_request, method: :delete, data: { confirm: 'Are you sure?' }
 
 
