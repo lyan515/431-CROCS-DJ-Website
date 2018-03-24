@@ -1,0 +1,7 @@
+%h1 Gig Request Approved! send link below to:
+%p
+  %strong Email:
+  = @gig_request.email
+%p
+  %strong URL:
+  = request.base_url << "/gig_requests/#{@gig_request.to_param}/show_final"

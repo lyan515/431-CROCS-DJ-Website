@@ -1,0 +1,33 @@
+%p
+  %strong Name:
+  = @gig_request.name
+%p
+  %strong Address:
+  = @gig_request.address
+%p
+  %strong Phone:
+  = @gig_request.phone
+%p
+  %strong Email:
+  = @gig_request.email
+%p
+  %strong Gig date:
+  = @gig_request.gig_date
+%p
+  %strong Gig time:
+  = @gig_request.gig_time.strftime("%I:%m %p")
+%p
+  %strong Gig duration(In hours):
+  = @gig_request.gig_duration
+%p
+  %strong Light Rental?:
+  = @gig_request.light_rent
+%p
+  %strong Speaker Rental?:
+  = @gig_request.speaker_rent
+%p
+  %strong Preferred DJ:
+  = @gig_request.dj_preferred
+%p
+  %strong Approved by DJ's of Aggieland Administrator?:
+  = @gig_request.approval

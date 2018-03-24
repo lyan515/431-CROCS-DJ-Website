@@ -1,0 +1,9 @@
+%h1 Gig Request Denied. Send link below to the user to show them conflicts:
+%p
+  %strong Email:
+  = @gig_request.email
+%p
+  %strong URL:
+  = request.base_url << "/gig_requests/#{@gig_request.to_param}/show_final"
+
+  
