@@ -9,7 +9,8 @@ RSpec.describe "gig_requests/index", type: :view do
         :phone => "Phone",
         :email => "MyString",
         :gig_date => '01-Jan-2000', 
-        :gig_time => '01:00'
+        :gig_time => '01:00',
+        :gig_duration => 3
       ),
       GigRequest.create!(
         :name => "Name",
@@ -17,7 +18,8 @@ RSpec.describe "gig_requests/index", type: :view do
         :phone => "Phone",
         :email => "MyString",
         :gig_date => '01-Jan-2000', 
-        :gig_time => '01:00'
+        :gig_time => '01:00',
+        :gig_duration => 2
       )
     ])
   end

@@ -24,7 +24,7 @@ RSpec.describe GigRequestsController, type: :controller do
   # GigRequest. As you add validations to GigRequest, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-   {name: "Jahn Smith", address: "111 Juniper Dr", phone: "999-999-9999", email: "john.smith69@gmail.com", gig_date: "2018-01-01", gig_time: "2000-01-01 08:30:00"}
+   {name: "Jahn Smith", address: "111 Juniper Dr", phone: "999-999-9999", email: "john.smith69@gmail.com", gig_date: "2018-01-01", gig_time: "2000-01-01 08:30:00", gig_duration: 3}
   }
 
   let(:invalid_attributes) {
@@ -103,7 +103,7 @@ RSpec.describe GigRequestsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {name: "Jana", address: "121 Juniper Dr", phone: "929-999-9999", email: "jana777@gmail.com", gig_date: "2018-02-01", gig_time: "2000-01-01 08:31:00"}
+        {name: "Jana", address: "121 Juniper Dr", phone: "929-999-9999", email: "jana777@gmail.com", gig_date: "2018-02-01", gig_time: "2000-01-01 08:31:00", gig_duration: 2}
       }
 
       it "updates the requested gig_request" do

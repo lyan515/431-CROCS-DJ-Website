@@ -8,7 +8,8 @@ RSpec.describe "gig_requests/edit", type: :view do
       :phone => "MyString",
       :email => "MyString",
       :gig_date => '01-Jan-2000', 
-      :gig_time => '01:00'
+      :gig_time => '01:00',
+      :gig_duration => 3
     ))
   end
 
