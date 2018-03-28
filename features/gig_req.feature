@@ -26,9 +26,9 @@ Then I should see Required Fields Missing
 Scenario: Fill out a form with with all required fields and no optional fields
 Given I am on the Gig Request Create page 
 When I fill out the form with the following attributes:
-      | gig_request_name          | John Smith                 |
-      | gig_request_address       | 111 Juniper Dr             |
-      | gig_request_email         | "john.smith69@gmail.com"   |
+      | gig_request_name          | Jahn Smath                 |
+      | gig_request_address       | 211 Juniper Dr             |
+      | gig_request_email         | "john.smith89@gmail.com"   |
 And I click the Create Gig Request link
 Then I should see Request Success
 
@@ -36,9 +36,14 @@ Then I should see Request Success
 Scenario: Fill out a form with with all required fields and optional fields
 Given I am on the Gig Request Create page 
 When I fill out the form with the following attributes:
-      | gig_request_name          | John Smith                 |
-      | gig_request_address       | 111 Juniper Dr             |
-      | gig_request_phone         | "999-999-9999"             |
-      | gig_request_email         | "john.smith69@gmail.com"   |
+      | gig_request_name          | Jahn Smath                 |
+      | gig_request_address       | 211 Juniper Dr             |
+      | gig_request_phone         | "899-999-9999"             |
+      | gig_request_email         | "jahn.smath89@gmail.com"   |
 And I click the Create Gig Request link
 Then I should see Request Success
+
+Scenario: As a client I approve of the final gig request
+Given I am on the Gig Request Final page 
+When I click the Approve Final link
+Then I should see Final Approval Success

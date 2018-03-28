@@ -8,6 +8,8 @@ Given (/^I am on the (.*?) page$/) do |arg|
        expect(page).to have_current_path(root_path)
     elsif arg == "Calendar" 
        welcome_calendar_path
+    elsif arg == "Gig Request Final" 
+      visit gig_requests_final_path(37)
     else
         raise "Could not find #{page}"
     end
@@ -24,8 +26,16 @@ When (/^I click the (.*?) link$/) do |link|
         find('input[name="commit"]').click
     elsif link == "Calendar"#having trouble with clicking a link_to, so I'm gonna just visit link
         visit welcome_calendar_path
-    elsif link == "Home"#having trouble with clicking a link_to, so I'm gonna just visit link
+    elsif link == "Calendar"
+        visit welcome_calendar_path
+    elsif link == "Home"
         visit root_path
+    elsif link == "Admin page"
+        visit gig_requests_path
+    elsif link == "Approve"
+        visit gig_requests_approve_path(37)
+    elsif link == "Deny"
+       visit gig_requests_deny_path(37)
     end
 end
 
@@ -33,13 +43,17 @@ Then (/^I should see (.*?)$/) do |arg|
   if arg == "Required Fields Missing"
        expect(page).to have_current_path(gig_requests_path)# this is concerning... Gig request is not going back to new after a failed attempt, works for now though
   elsif arg == "Request Success"
-       expect(page).to have_current_path(gig_request_path(1))
+       expect(page).to have_current_path(gig_request_path('mw'))
   elsif arg == "Calendar" 
        expect(page).to have_current_path(welcome_calendar_path)
   elsif arg == "Signed in as Admin" 
        visit home_page_path
   elsif arg == "Not an Admin: Please log in as an Admin" 
        expect(page).to have_current_path(root_path)
+  elsif arg == "Approve Page" 
+       expect(page).to have_current_path(gig_requests_approve_path(37))
+  elsif arg == "Deny Page" 
+       expect(page).to have_current_path(gig_requests_deny_path(37))
   end
 end
 

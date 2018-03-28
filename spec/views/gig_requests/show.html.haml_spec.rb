@@ -8,8 +8,10 @@ RSpec.describe "gig_requests/show", type: :view do
       :phone => "Phone",
       :email => "Email",
       :gig_date => '01-Jan-2000', 
-      :gig_time => '01:00'
+      :gig_time => '01:00',
+      :gig_duration => 2
     ))
+    @current_user = FactoryGirl.build(:user)
   end
 
   it "renders attributes in <p>" do

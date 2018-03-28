@@ -11,6 +11,7 @@ RSpec.describe "gig_requests/edit", type: :view do
       :gig_time => '01:00',
       :gig_duration => 3
     ))
+    @current_user = FactoryGirl.build(:user)
   end
 
   it "renders the edit gig_request form" do

@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'simplecov'
+require 'factory_girl_rails'
 SimpleCov.start
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -30,6 +31,21 @@ SimpleCov.start
 #
 ActionController::Base.allow_rescue = false
 
+#create database
+Before do
+  gig_requests = [{:name => 'John Smith', :address => '111 Juniper Dr', :phone => '999-999-9999', :email => 'john.smith69@gmail.com', :gig_date => '01-Jan-2018', :gig_time => '08:30', :gig_duration => 3, :light_rent => false, :speaker_rent => true,  :dj_preferred => "Clayton Wells", :approval => false},
+                  {:name => 'Samoa Joe', :address => '999 Coquina Crossing', :phone => '123-456-7890', :email => 'heisfat@gmail.com', :gig_date => '02-Feb-2018', :gig_time => '22:30', :gig_duration => 2, :light_rent => false, :speaker_rent => false, :dj_preferred => "Jcroc", :approval => false}]
+  
+  gig_requests.each do |gig_request|
+    GigRequest.create!(gig_request)
+  end
+  
+  user_test = [{:uid => '113054678615933156222'}]
+  User.create!(user_test)
+  
+end
+
+
 # Remove/comment out the lines below if your app doesn't have a database.
 # For some databases (like MongoDB and CouchDB) you may need to use :truncation instead.
 begin
@@ -53,31 +69,36 @@ end
 #   end
 #:uid => '113054678615933156222',
 
+FactoryGirl.define do
+    factory :user do
+      uid "113054678615933156222"
+    end
+end
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-Before('@omniauth_test') do
-  OmniAuth.config.test_mode = true
-  Capybara.default_host = 'http://example.com'
-
-  OmniAuth.config.add_mock(:google, {
-    :uid => '113054678615933156222',
-    :info => {
-      :name => 'validuser',
-    }
-  })
-
-  OmniAuth.config.add_mock(:google, {
-    :uid => '113055578615933142122',
-    :info => {
-      :name => 'invaliduser'
-    }
-  })
-end
-
-After('@omniauth_test') do
-  OmniAuth.config.test_mode = false
-end
+#Before('@omniauth_test') do
+#  OmniAuth.config.test_mode = true
+#  Capybara.default_host = 'http://example.com'
+#
+#  OmniAuth.config.add_mock(:google, {
+#    :uid => '113054678615933156222',
+#    :info => {
+#      :name => 'validuser',
+#    }
+#  })
+#
+#  OmniAuth.config.add_mock(:google, {
+#    :uid => '113055578615933142122',
+#    :info => {
+#      :name => 'invaliduser'
+#    }
+#  })
+#end
+#
+#After('@omniauth_test') do
+#  OmniAuth.config.test_mode = false
+#end
 

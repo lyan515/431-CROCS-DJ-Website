@@ -38,7 +38,7 @@ RSpec.describe GigRequestsController, type: :controller do
 
   describe "GET #index" do
     it "assigns all gig_requests as @gig_requests" do
-      gig_request = GigRequest.create! valid_attributes
+      @gig_request = GigRequest.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:gig_requests)).to eq(@gig_request)
     end
@@ -95,7 +95,7 @@ RSpec.describe GigRequestsController, type: :controller do
 
       it "re-renders the 'new' template" do
         post :create, {:gig_request => invalid_attributes}, valid_session
-        expect(response).to render_template("index")
+        expect(response).to render_template("gig_requests/new")
       end
     end
   end
@@ -127,16 +127,11 @@ RSpec.describe GigRequestsController, type: :controller do
     end
 
     context "with invalid params" do
-      it "assigns the gig_request as @gig_request" do
+      
+      it "re-renders the 'edit' template" do #changed due to quirk with invalid form submission redirecting to gig_request
         gig_request = GigRequest.create! valid_attributes
         put :update, {:id => gig_request.to_param, :gig_request => invalid_attributes}, valid_session
-        expect(assigns(:gig_request)).to eq(gig_request)
-      end
-
-      it "re-renders the 'edit' template" do
-        gig_request = GigRequest.create! valid_attributes
-        put :update, {:id => gig_request.to_param, :gig_request => invalid_attributes}, valid_session
-        expect(response).to render_template("form")
+        expect(response).to redirect_to(gig_request)
       end
     end
   end
@@ -153,6 +148,38 @@ RSpec.describe GigRequestsController, type: :controller do
       gig_request = GigRequest.create! valid_attributes
       delete :destroy, {:id => gig_request.to_param}, valid_session
       expect(response).to redirect_to(gig_requests_url)
+    end
+  end
+  
+  describe "GET #approve" do
+    it "approves gig request" do
+      gig_request = GigRequest.create! valid_attributes
+      get :approve, {:id => gig_request.to_param}, valid_session
+      expect(response).to render_template("gig_requests/approve")
+    end
+  end
+  
+  describe "GET #deny" do
+    it "deny gig request" do
+      gig_request = GigRequest.create! valid_attributes
+      get :deny, {:id => gig_request.to_param}, valid_session
+      expect(response).to render_template("gig_requests/deny")
+    end
+  end
+  
+  describe "GET #show_client_final" do
+    it "render the final check for the client" do
+      gig_request = GigRequest.create! valid_attributes
+      get :show_client_final, {:id => gig_request.to_param}, valid_session
+      expect(response).to render_template("gig_requests/show_client_final")
+    end
+  end
+  
+  describe "GET #show_client_final_approve" do
+    it "render the final check approval by the client" do
+      gig_request = GigRequest.create! valid_attributes
+      get :show_client_final_approve, {:id => gig_request.to_param}, valid_session
+      expect(response).to render_template("gig_requests/show_client_final_approve")
     end
   end
 

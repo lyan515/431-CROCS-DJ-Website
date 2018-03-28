@@ -1,18 +1,17 @@
 #(.*?) keeps code DRY so that other people can define their steps with this framework
 #instead of creating new methods for their tests
 
-# def current_user
-#     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-# end
-
 Given (/^I am logged in on (.*?) account$/) do |arg|
   if arg == "N/A"
    # (current_user.uid).should equal(null_session)
   elsif arg == "Invalid"
     #(current_user.uid).should_not equal("113054678615933156222")
   else
-    #(current_user.uid).should equal("113054678615933156222")
+    @current_user = FactoryGirl.build(:user)
+    cookies[:stub_user_id] = @current_user.id
   end
+  
+
 end
 
 #since step definitions are global, i took out the click link definition, since we already have one in the other file
