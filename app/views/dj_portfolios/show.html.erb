@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @dj_portfolio.name %>
+</p>
+
+<p>
+  <%= image_tag @dj_portfolio.avatar.thumb.url %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @dj_portfolio.bio %>
+</p>
+
+<p>
+  <strong>Facebook link:</strong>
+  <%= @dj_portfolio.facebook_link %>
+</p>
+
+<p>
+  <strong>Instagram link:</strong>
+  <%= @dj_portfolio.instagram_link %>
+</p>
+
+<p>
+  <strong>Twitter link:</strong>
+  <%= @dj_portfolio.twitter_link %>
+</p>
+
+<p>
+  <strong>Soundcloud link:</strong>
+  <%= @dj_portfolio.soundcloud_link %>
+</p>
+
+<p>
+  <strong>Mixcloud link:</strong>
+  <%= @dj_portfolio.mixcloud_link %>
+</p>
+
+<%= link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio) %> |
+<%= link_to 'Back', dj_portfolios_path %>
