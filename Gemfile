@@ -40,6 +40,8 @@ gem "omniauth-google-oauth2", "~> 0.2.1"
 
 gem 'themoviedb'
 gem 'hashids'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 group :development do
  # Call 'byebug' anywhere in the code to stop execution and get a debugger console

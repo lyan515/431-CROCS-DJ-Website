@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :dj_portfolios
   #gets for sessions
   get 'sessions/create'
   get 'sessions/destroy'

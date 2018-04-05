@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180324194018) do
+ActiveRecord::Schema.define(version: 20180403165042) do
+
+# Could not dump table "dj_portfolios" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "gig_requests", force: :cascade do |t|
     t.string   "name"
