@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403165042) do
+ActiveRecord::Schema.define(version: 20180408214046) do
 
 # Could not dump table "dj_portfolios" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20180403165042) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.boolean  "client_approval"
+    t.float    "price"
   end
 
   create_table "users", force: :cascade do |t|

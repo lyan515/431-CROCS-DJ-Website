@@ -11,5 +11,19 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe GigRequestsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "#emailCheck" do
+  it "should be defined" do
+    expect { emailCheck("ao@gmail.com") }.not_to raise_error()#::NoMethodError)
+  end
+  it 'classifies true cases [10 points]' , points: 10 do
+    expect(emailCheck('ao@gmail.com')).to be_truthy, "valid email"
+  end
+  it 'classifies false cases [10 points]' , points: 10 do
+    expect(emailCheck('a')).to be_falsy, "invalid email"
+  end
+  it 'works on the empty string [5 points]' , points: 5 do
+    expect(emailCheck('')).to be_falsy
+  end
+  
+end
 end
