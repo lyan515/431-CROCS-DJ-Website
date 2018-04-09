@@ -8,16 +8,18 @@ class GigRequest < ActiveRecord::Base
     
      validates :name, presence: true
      validates :address, presence: true
-     validates :email, presence: true
+     validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: ": Incorrect email format"}
      validates :gig_date, presence: true
      validates :gig_time, presence: true
      validates :gig_time, presence: true
-     validates :gig_duration, presence: true
+     validates :gig_duration, numericality: { greater_than: 0,  message: ": Duration must be greather than 1 hour"}
+     validates :price, numericality: { greater_than_or_equal_to: 0,  message: ": Prices cannot be negative"}
      
      after_initialize :init
      
      def init
        self.approval ||= false
        self.client_approval ||= false
+       self.price ||= 0
      end
 end

@@ -4,9 +4,9 @@ class GigRequestsController < ApplicationController
   # GET /gig_requests
   # GET /gig_requests.json
   def index
-    if !current_user#no unauthorized user should be on this page
+    if !user_current#no unauthorized user should be on this page
       redirect_to root_path
-    elsif !valid_user
+    elsif !user_valid
       redirect_to root_path
     else
       @gig_requests = GigRequest.all
@@ -109,6 +109,6 @@ class GigRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_request_params
-      params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time, :gig_duration, :light_rent, :speaker_rent, :dj_preferred, :dj_actual, :approval, :client_approval)
+      params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time, :gig_duration, :light_rent, :speaker_rent, :dj_preferred, :dj_actual, :approval, :client_approval, :price)
     end
 end

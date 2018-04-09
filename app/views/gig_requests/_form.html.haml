@@ -47,5 +47,9 @@
     = f.label "Preferred DJ"
     %br/
     = f.text_field :dj_preferred
+  .field
+    = f.label "Price(per hour)"
+    %br/
+    = f.number_field :price, step: :any
   .actions
     = f.submit

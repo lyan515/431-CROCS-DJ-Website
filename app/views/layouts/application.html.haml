@@ -8,8 +8,8 @@
 
   %body
     %div
-      - if current_user
-        - if valid_user
+      - if user_current
+        - if user_valid
           Signed in as Admin
           = link_to "Sign out", signout_path, id: "sign_out"
           = link_to "Admin Page", gig_requests_path 

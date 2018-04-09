@@ -31,3 +31,6 @@
 %p
   %strong Approved by DJ's of Aggieland Administrator?:
   = @gig_request.approval
+%p
+  %strong Price(Per hour): $
+  = "%.2f" % @gig_request.price

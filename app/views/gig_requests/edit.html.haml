@@ -1,7 +1,7 @@
 %h1 Editing Gig Request
 = render 'form'
 |
--if current_user && valid_user
+-if user_current && user_valid
   = render 'show_admin'
 -else
   = render 'show_user'
