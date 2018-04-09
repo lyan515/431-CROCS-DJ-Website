@@ -16,6 +16,7 @@
       %th Preferred DJ
       %th= link_to "Admin Approved", gig_requests_path(sort:"approval"), id:"approval_header"
       %th User Approved
+      %th Price
       %th{:colspan => "5"}
   %tbody
     - @gig_requests.each do |gig_request|
@@ -32,6 +33,7 @@
         %td= gig_request.dj_preferred
         %td= gig_request.approval
         %td= gig_request.client_approval
+        %td= gig_request.price
         %td= link_to 'Show', gig_request
         %td= link_to 'Edit', edit_gig_request_path(gig_request)
         %td= link_to 'Destroy', gig_request, method: :delete, data: { confirm: 'Are you sure?' }
