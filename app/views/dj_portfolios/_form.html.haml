@@ -1,0 +1,43 @@
+= form_for(@dj_portfolio) do |f|
+  - if @dj_portfolio.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@dj_portfolio.errors.count, "error")
+        prohibited this dj_portfolio from being saved:
+      %ul
+        - @dj_portfolio.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :avatar
+    %br/
+    = f.file_field :avatar
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :bio
+    %br/
+    = f.text_field :bio
+  .field
+    = f.label :facebook_link
+    %br/
+    = f.text_field :facebook_link
+  .field
+    = f.label :instagram_link
+    %br/
+    = f.text_field :instagram_link
+  .field
+    = f.label :twitter_link
+    %br/
+    = f.text_field :twitter_link
+  .field
+    = f.label :soundcloud_link
+    %br/
+    = f.text_field :soundcloud_link
+  .field
+    = f.label :mixcloud_link
+    %br/
+    = f.text_field :mixcloud_link
+  .actions
+    = f.submit

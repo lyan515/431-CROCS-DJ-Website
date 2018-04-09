@@ -1,0 +1,30 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @dj_portfolio.name
+%p
+  = image_tag @dj_portfolio.avatar.thumb.url
+%p
+  %strong Bio:
+  = @dj_portfolio.bio
+%p
+  %strong Facebook link:
+  = @dj_portfolio.facebook_link
+%p
+  %strong Instagram link:
+  = @dj_portfolio.instagram_link
+%p
+  %strong Twitter link:
+  = @dj_portfolio.twitter_link
+%p
+  %strong Soundcloud link:
+  = @dj_portfolio.soundcloud_link
+%p
+  %strong Mixcloud link:
+  = @dj_portfolio.mixcloud_link
+
+-if user_current && user_valid
+  = link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio)
+  = link_to 'Back', dj_portfolios_path
+-else
+  = link_to 'Back', root_path

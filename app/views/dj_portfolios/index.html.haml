@@ -1,0 +1,32 @@
+%p#notice= notice
+%h1 Listing Dj Portfolios
+%table
+  %thead
+    %tr
+      %td Profile Picture
+      %th Name
+      %th Facebook link
+      %th Instagram link
+      %th Twitter link
+      %th Soundcloud link
+      %th Mixcloud link
+      %th{:colspan => "4"}
+  %tbody
+    - @dj_portfolios.each do |dj_portfolio|
+      %tr
+        %td= image_tag dj_portfolio.avatar.thumb.url
+        %td= dj_portfolio.name
+        %td= dj_portfolio.facebook_link
+        %td= dj_portfolio.instagram_link
+        %td= dj_portfolio.twitter_link
+        %td= dj_portfolio.soundcloud_link
+        %td= dj_portfolio.mixcloud_link
+        %td= link_to 'Show', dj_portfolio
+
+
+-if user_current && user_valid
+  = link_to 'New Dj portfolio', new_dj_portfolio_path
+  = link_to 'Back', root_path
+-else
+  = link_to 'Back', root_path
+
