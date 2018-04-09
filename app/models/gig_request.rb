@@ -20,6 +20,5 @@ class GigRequest < ActiveRecord::Base
      def init
        self.approval ||= false
        self.client_approval ||= false
-       self.price ||= 0
      end
 end
