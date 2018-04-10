@@ -4,6 +4,8 @@
 Given (/^I am on the (.*?) page$/) do |arg|
     if arg == "Gig Request Create" 
        visit new_gig_request_path
+    elsif arg == "DJ Portfolio Create" 
+       visit new_dj_portfolio_path
     elsif arg == "Home"
        expect(page).to have_current_path(root_path)
     elsif arg == "Calendar" 
@@ -22,7 +24,7 @@ When (/^I fill out the form with the following attributes:$/) do |table|
 end
 
 When (/^I click the (.*?) link$/) do |link|
-    if link == "Create Gig Request"
+    if link == "Create"
         find('input[name="commit"]').click
     elsif link == "Calendar"#having trouble with clicking a link_to, so I'm gonna just visit link
         visit welcome_calendar_path
@@ -40,8 +42,12 @@ When (/^I click the (.*?) link$/) do |link|
 end
 
 Then (/^I should see (.*?)$/) do |arg|
-  if arg == "Required Fields Missing"
+  if arg == "Required Fields Missing Gig Request"
        expect(page).to have_current_path(gig_requests_path)# this is concerning... Gig request is not going back to new after a failed attempt, works for now though
+  elsif arg == "Required Fields Missing Dj Portfolio"
+       expect(page).to have_current_path(dj_portfolios_path)
+  elsif arg == "Dj portfolio was successfully created"
+       expect(page).to have_current_path(dj_portfolios_path)
   elsif arg == "Request Success"
        expect(page).to have_current_path(gig_request_path('mw'))
   elsif arg == "Calendar" 
@@ -56,7 +62,6 @@ Then (/^I should see (.*?)$/) do |arg|
        expect(page).to have_current_path(gig_requests_deny_path(37))
   end
 end
-
 
 
 #useful simulated actions

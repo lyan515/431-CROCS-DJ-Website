@@ -12,3 +12,7 @@ gig_requests = [{:name => 'John Smith', :address => '111 Juniper Dr', :phone => 
 gig_requests.each do |gig_request|
   GigRequest.create!(gig_request)
 end
+
+dj_portfolio = [{:name => 'John Smith'}]
+
+DjPortfolio.create!(dj_portfolio)

@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: White;
+  background: red;
   color: DarkSlateGrey;
   font-family: Tahoma, Verdana, sans-serif;
   font-size: 10pt;
@@ -28,7 +28,7 @@ h1.title {
   margin: 0 0 1em;
   padding: 10px;
   background-color: orange;
-  color: white;
+  color: red;
   border-bottom: 4px solid gold;
   font-size: 2em;
   font-style: normal;

@@ -8,6 +8,7 @@ class CreateDjPortfolios < ActiveRecord::Migration
       t.string :twitter_link
       t.string :soundcloud_link
       t.string :mixcloud_link
+      t.string :avatar
 
       t.timestamps null: false
     end
