@@ -49,3 +49,11 @@ Scenario: As a client I approve of the final gig request
 Given I am on the Gig Request Final page 
 When I click the Approve Final link
 Then I should see Final Approval Success
+
+Scenario: Edit a current porfolio
+Given I am on the Gig Request Index page 
+When I click the Edit Gig Request link
+And I fill out the form with the following attributes:
+      | gig_request_name          | Jahn Smath                 |
+And I click the Update link
+Then I should see Request Update Success

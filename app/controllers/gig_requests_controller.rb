@@ -1,6 +1,7 @@
 class GigRequestsController < ApplicationController
   before_action :set_gig_request, only: [:show, :edit, :update, :destroy]
-
+  include ApplicationHelper
+  
   # GET /gig_requests
   # GET /gig_requests.json
   def index

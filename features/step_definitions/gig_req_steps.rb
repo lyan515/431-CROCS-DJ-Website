@@ -6,6 +6,10 @@ Given (/^I am on the (.*?) page$/) do |arg|
        visit new_gig_request_path
     elsif arg == "DJ Portfolio Create" 
        visit new_dj_portfolio_path
+    elsif arg == "DJ Portfolio" 
+       visit dj_portfolios_path
+    elsif arg == "Gig Request Index" 
+       visit gig_requests_path 
     elsif arg == "Home"
        expect(page).to have_current_path(root_path)
     elsif arg == "Calendar" 
@@ -38,6 +42,14 @@ When (/^I click the (.*?) link$/) do |link|
         visit gig_requests_approve_path(37)
     elsif link == "Deny"
        visit gig_requests_deny_path(37)
+    elsif link == "Show Portfolio"
+       visit dj_portfolio_path(1) #thanks my dude
+    elsif link == "Update"
+        find('input[name="commit"]').click
+    elsif link == "Edit Portfolio"
+        visit edit_dj_portfolio_path(1)
+    elsif link == "Edit Gig Request"
+        visit edit_gig_request_path(37) 
     end
 end
 
@@ -46,10 +58,14 @@ Then (/^I should see (.*?)$/) do |arg|
        expect(page).to have_current_path(gig_requests_path)# this is concerning... Gig request is not going back to new after a failed attempt, works for now though
   elsif arg == "Required Fields Missing Dj Portfolio"
        expect(page).to have_current_path(dj_portfolios_path)
-  elsif arg == "Dj portfolio was successfully created"
-       expect(page).to have_current_path(dj_portfolios_path)
+  elsif arg == "DJ Portfolio Success"
+       expect(page).to have_content("Dj portfolio was successfully created.")
+  elsif arg == "DJ Portfolio Update Success"
+       expect(page).to have_content("Dj portfolio was successfully updated.")
   elsif arg == "Request Success"
        expect(page).to have_current_path(gig_request_path('mw'))
+  elsif arg == "Request Update Success"
+       expect(page).to have_current_path(gig_request_path(37))
   elsif arg == "Calendar" 
        expect(page).to have_current_path(welcome_calendar_path)
   elsif arg == "Signed in as Admin" 

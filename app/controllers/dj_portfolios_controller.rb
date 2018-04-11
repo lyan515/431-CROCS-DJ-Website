@@ -1,6 +1,6 @@
 class DjPortfoliosController < ApplicationController
   before_action :set_dj_portfolio, only: [:show, :edit, :update, :destroy]
-
+  include ApplicationHelper
   # GET /dj_portfolios
   # GET /dj_portfolios.json
   def index

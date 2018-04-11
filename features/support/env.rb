@@ -43,6 +43,9 @@ Before do
   user_test = [{:uid => '113054678615933156222'}]
   User.create!(user_test)
   
+  dj_portfolios = {:name => 'John Smith'}
+  DjPortfolio.create!(dj_portfolios)
+  
 end
 
 

@@ -41,3 +41,23 @@ When I fill out the form with the following attributes:
       | dj_portfolio_mixcloud_link      | mixcloud.com   |
 And I click the Create link
 Then I should see DJ Portfolio Success
+
+###############
+
+#features/step_definitions/dj_portfolio_steps.rb
+Scenario: Edit a current porfolio
+Given I am on the DJ Portfolio page 
+When I click the Show Portfolio link
+And I click the Edit Portfolio link
+And I fill out the form with the following attributes:
+      | dj_portfolio_name          | Jahn Smath                 |
+And I click the Update link
+Then I should see DJ Portfolio Update Success
+
+#features/step_definitions/dj_portfolio_steps.rb
+# Scenario: Delete a current portfolio
+# Given I am on the DJ Portfolio page 
+# When I click the Show Portfolio link
+# And I click the Delete Portfolio link
+# And I click the OK link
+# Then I should see DJ Portfolio Destroy
