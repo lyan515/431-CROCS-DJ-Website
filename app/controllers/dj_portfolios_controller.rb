@@ -25,6 +25,7 @@ class DjPortfoliosController < ApplicationController
   # POST /dj_portfolios
   # POST /dj_portfolios.json
   def create
+    params[:dj_portfolio][:genres] = params[:dj_portfolio][:genres].split(/\s|,/) if params[:dj_portfolio].try(:[], :genres).present?
     @dj_portfolio = DjPortfolio.new(dj_portfolio_params)
 
     respond_to do |format|
@@ -65,11 +66,12 @@ class DjPortfoliosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_dj_portfolio
+      params[:dj_portfolio][:genres] = params[:dj_portfolio][:genres].split(/\s|,/) if params[:dj_portfolio].try(:[], :genres).present?
       @dj_portfolio = DjPortfolio.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def dj_portfolio_params
-      params.require(:dj_portfolio).permit(:name, :bio, :avatar, :facebook_link, :instagram_link, :twitter_link, :soundcloud_link, :mixcloud_link)
+      params.require(:dj_portfolio).permit(:name, :bio, :avatar, :facebook_link, :instagram_link, :twitter_link, :soundcloud_link, :mixcloud_link, {:genres => []})
     end
 end

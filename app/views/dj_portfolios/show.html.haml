@@ -1,4 +1,3 @@
-%p#notice= notice
 %p
   %strong Name:
   = @dj_portfolio.name
@@ -22,6 +21,9 @@
 %p
   %strong Mixcloud link:
   = @dj_portfolio.mixcloud_link
+%p
+  %strong genres:
+  = @dj_portfolio.genres.join(", ") 
 
 -if user_current && user_valid
   = link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio)

@@ -18,7 +18,7 @@
   .field
     = f.label :bio
     %br/
-    = f.text_field :bio
+    = f.text_area :bio, :cols => 80, :rows => 10
   .field
     = f.label :facebook_link
     %br/
@@ -39,5 +39,9 @@
     = f.label :mixcloud_link
     %br/
     = f.text_field :mixcloud_link
+  .field
+    = f.label :genres
+    %br/
+    = f.text_field :genres
   .actions
     = f.submit

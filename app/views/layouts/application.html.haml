@@ -1,10 +1,32 @@
-!!!
 %html
   %head
     %title DJs of Aggieland
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
+
+
+
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %a.navbar-brand{:href => "index.html"}
+        %img.logobrand{:alt => "", :src => "assets/images/logo.png", :style => "padding-top:0px"}/
+      %div{:style => "padding-top: 9px;"}
+        %button#burger.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+    / Collect the nav links, forms, and other content for toggling
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      %ul.nav.navbar-nav.navbar-right{:style => "padding-top:9px"}
+        %li= link_to 'Home'.html_safe, root_path
+        %li{:style => "background-color: #314190"}= link_to 'Request a gig', new_gig_request_path
+        %li= link_to 'Calendar', welcome_calendar_path
+        %li= link_to 'DJ Portfolios', dj_portfolios_path
+        %li= link_to 'Contact'
 
   %body
     %div
@@ -22,7 +44,7 @@
   
     
     %h1.title 
-      = link_to 'DJs of Aggieland', root_path
+      = 'DJs of Aggieland'
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]

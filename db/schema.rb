@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410175004) do
+ActiveRecord::Schema.define(version: 20180418010203) do
 
   create_table "dj_portfolios", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180410175004) do
     t.string   "avatar"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "genres"
   end
 
   create_table "gig_requests", force: :cascade do |t|

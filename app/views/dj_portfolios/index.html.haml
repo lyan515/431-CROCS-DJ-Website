@@ -1,15 +1,15 @@
-%p#notice= notice
-%h1 Listing Dj Portfolios
+%h2 DJ Profiles
 %table
   %thead
     %tr
-      %td Profile Picture
+      %th Profile Picture
       %th Name
-      %th Facebook link
-      %th Instagram link
-      %th Twitter link
-      %th Soundcloud link
-      %th Mixcloud link
+      %th Facebook
+      %th Instagram
+      %th Twitter
+      %th Soundcloud
+      %th Mixcloud
+      %th Genres
       %th{:colspan => "9"}
   %tbody
     - @dj_portfolios.each do |dj_portfolio|
@@ -21,6 +21,7 @@
         %td= dj_portfolio.twitter_link
         %td= dj_portfolio.soundcloud_link
         %td= dj_portfolio.mixcloud_link
+        %td= dj_portfolio.genres.join(", ") 
         %td= link_to 'Show', dj_portfolio
 
 
