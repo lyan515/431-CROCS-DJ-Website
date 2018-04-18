@@ -77,6 +77,7 @@ class GigRequestsController < ApplicationController
   end
   
   def approve
+    create_calendar_event
     set_gig_request
     @gig_request.approval = true
     @gig_request.save
@@ -111,5 +112,26 @@ class GigRequestsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def gig_request_params
       params.require(:gig_request).permit(:name, :address, :phone, :email, :gig_date, :gig_time, :gig_duration, :light_rent, :speaker_rent, :dj_preferred, :dj_actual, :approval, :client_approval, :price)
+    end
+    
+    def create_calendar_event
+        puts 'in calendar event'
+        @event = {
+          'summary' => 'Sample Event',
+          'description' => 'Sample description',
+          'location' => 'TAMU',
+          'start' => { 'dateTime' => '2018-04-19T17:00:00-07:00' },
+          'end' => { 'dateTime' => '2018-04-19T17:00:00-07:00' },
+          'attendees' => [ { "email" => 'calebWillNeverSeeThis@example.com' },
+          { "email" =>'jimmyWillNeverSeeThis@example.com' } ] }
+        
+        client = Google::APIClient.new
+        client.authorization.access_token = current_user.token
+        service = client.discovered_api('calendar', 'v3')
+        
+        @set_event = client.execute(:api_method => service.events.insert,
+                                :parameters => {'calendarId' => current_user.email, 'sendNotifications' => true},
+                                :body => JSON.dump(@event),
+                                :headers => {'Content-Type' => 'application/json'})
     end
 end
