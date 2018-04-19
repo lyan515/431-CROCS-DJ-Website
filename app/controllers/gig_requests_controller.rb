@@ -116,6 +116,9 @@ class GigRequestsController < ApplicationController
     
     def create_calendar_event
         puts 'in calendar event'
+        # test_uid = get_admin_token
+        # puts test_uid
+        
         @event = {
           'summary' => 'Sample Event',
           'description' => 'Sample description',
@@ -125,13 +128,13 @@ class GigRequestsController < ApplicationController
           'attendees' => [ { "email" => 'calebWillNeverSeeThis@example.com' },
           { "email" =>'jimmyWillNeverSeeThis@example.com' } ] }
         
-        client = Google::APIClient.new
-        client.authorization.access_token = current_user.token
-        service = client.discovered_api('calendar', 'v3')
+        # client = Google::APIClient.new
+        # client.authorization.access_token = current_user.token
+        # service = client.discovered_api('calendar', 'v3')
         
-        @set_event = client.execute(:api_method => service.events.insert,
-                                :parameters => {'calendarId' => current_user.email, 'sendNotifications' => true},
-                                :body => JSON.dump(@event),
-                                :headers => {'Content-Type' => 'application/json'})
+        # @set_event = client.execute(:api_method => service.events.insert,
+        #                         :parameters => {'calendarId' => current_user.email, 'sendNotifications' => true},
+        #                         :body => JSON.dump(@event),
+        #                         :headers => {'Content-Type' => 'application/json'})
     end
 end

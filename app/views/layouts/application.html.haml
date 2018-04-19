@@ -12,7 +12,8 @@
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %a.navbar-brand{:href => "index.html"}
-        %img.logobrand{:alt => "", :src => "images/DJOA futura.png", :style => "padding-top:0px"}/
+        // %img.logobrand{:alt => "", :src => "app/assets/images/DJOA futura.png", :style => "padding-top:0px"}/
+        %img.logobrand= link_to image_tag("DJOA futura.png")
       %div{:style => "padding-top: 9px;"}
         %button#burger.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
           %span.sr-only Toggle navigation
@@ -21,6 +22,7 @@
           %span.icon-bar
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    
       %ul.nav.navbar-nav.navbar-right{:style => "padding-top:9px"}
         %li= link_to 'Home'.html_safe, root_path
         %li{:style => "background-color: #314190"}= link_to 'Request a gig', new_gig_request_path

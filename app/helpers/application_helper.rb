@@ -9,4 +9,9 @@ module ApplicationHelper
     end
     
   end
+  
+  def get_admin_token
+    @current_user.oauth_token
+  end
+  
 end

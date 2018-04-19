@@ -455,7 +455,7 @@ input:-ms-input-placeholder {
 }
 
 .navbar {
-
+    background-color: red;
     min-height: 50px;
     margin-bottom:0;
     border: 1px solid transparent;
