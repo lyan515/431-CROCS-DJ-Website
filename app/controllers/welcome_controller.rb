@@ -6,4 +6,7 @@ class WelcomeController < ApplicationController
   def calendar
     
   end
+  def contact
+    
+  end
 end

@@ -29,8 +29,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # This is for google authentication
 gem "omniauth-google-oauth2", "~> 0.2.1"
 
+#This is for Calendar API use
+gem 'google-api-client', '0.8.2', :require => 'google/api_client'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+#for encrypting table columns
+gem 'attr_encrypted'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

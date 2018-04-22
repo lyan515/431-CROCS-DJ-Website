@@ -8,7 +8,7 @@ class GigRequest < ActiveRecord::Base
     
      validates :name, presence: true
      validates :address, presence: true
-     validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: ": Incorrect email format"} #regex that checks is the email is valid
+     validates :email, format: { with: /\A([\w+\-].?)+#[a-z\d\-]+(\~[a-z]+)*\~[a-z]+\z/i, message: ": Incorrect email format"} #regex that checks is the email is valid
      validates :gig_date, presence: true
      validates :gig_time, presence: true
      validates :gig_duration, numericality: { greater_than: 0,  message: ": Duration must be greather than 1 hour"}

@@ -4,11 +4,6 @@
     %tr
       %th Profile Picture
       %th Name
-      %th Facebook
-      %th Instagram
-      %th Twitter
-      %th Soundcloud
-      %th Mixcloud
       %th Genres
       %th{:colspan => "9"}
   %tbody
@@ -16,11 +11,6 @@
       %tr
         %td= image_tag dj_portfolio.avatar.thumb.url
         %td= dj_portfolio.name
-        %td= dj_portfolio.facebook_link
-        %td= dj_portfolio.instagram_link
-        %td= dj_portfolio.twitter_link
-        %td= dj_portfolio.soundcloud_link
-        %td= dj_portfolio.mixcloud_link
         %td= dj_portfolio.genres.join(", ") 
         %td= link_to 'Show', dj_portfolio
 

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   #welcome gets
   get 'welcome/index'
   get 'welcome/calendar'
-  
+  get 'welcome/contact'
   #get gig_request pages
   get 'gig_requests/index'
   get 'gig_requests/:id/approve' => 'gig_requests#approve', as: :gig_requests_approve

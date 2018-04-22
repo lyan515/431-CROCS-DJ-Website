@@ -1,57 +1,63 @@
+
 %html
   %head
     %title DJs of Aggieland
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag "style", 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = csrf_meta_tags
 
-
-
-%nav.navbar.navbar-default.navbar-fixed-top
+%body
+%nav.navbar.navbar-default.navbar-fixed-top{:id => "nav_bar"}
+  %button#burger.navbar-toggle.collapsed{"button id" => "burger", "aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+    %span.sr-only Toggle navigation
+    %span.icon-bar
+    %span.icon-bar
+    %span.icon-bar
   .container
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %a.navbar-brand{:href => "index.html"}
-        // %img.logobrand{:alt => "", :src => "app/assets/images/DJOA futura.png", :style => "padding-top:0px"}/
-        %img.logobrand= link_to image_tag("DJOA futura.png")
-      %div{:style => "padding-top: 9px;"}
-        %button#burger.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-          %span.sr-only Toggle navigation
-          %span.icon-bar
-          %span.icon-bar
-          %span.icon-bar
+        %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 35px; opacity: .35;') 
+      // mobile version nav bar
+      %div{:style => "padding-top: 18px;"}
+
+       
     / Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
-    
-      %ul.nav.navbar-nav.navbar-right{:style => "padding-top:9px"}
-        %li= link_to 'Home'.html_safe, root_path
-        %li{:style => "background-color: #314190"}= link_to 'Request a gig', new_gig_request_path
+    // desktop version nav bar
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse.collapse{"aria-expanded" => "false", :style => "height: 0px;"}
+      %ul.nav.navbar-nav.navbar-right{:style => "padding-top:5px"}
+        %li.active= link_to 'Home'.html_safe, root_path
+        %li= link_to 'Request a gig', new_gig_request_path
         %li= link_to 'Calendar', welcome_calendar_path
         %li= link_to 'DJ Portfolios', dj_portfolios_path
-        %li= link_to 'Contact'
+        %li= link_to 'Contact', welcome_contact_path
 
-  %body
-    %div
-      - if user_current
-        - if user_valid
-          Signed in as Admin
-          = link_to "Sign out", signout_path, id: "sign_out"
-          = link_to "Admin Page", gig_requests_path 
-        - else
-          = link_to "Not an Admin: Please log in as an Admin", "/auth/google_oauth2", id: "sign_in"
-      - else
-        = link_to "Admin Login", "/auth/google_oauth2", id: "sign_in"
-    %div
+
+
     
+    %div
   
-    
-    %h1.title 
-      = 'DJs of Aggieland'
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
         #warning.message= flash[:warning]
+
+        
+      // %div{:class => "container"}
+=yield
+=render "layouts/footer"
         
 
-      = yield
+
+
+
+
+
+
+        
+
+        
+    

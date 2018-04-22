@@ -20,10 +20,10 @@
   %tbody
     - @gig_requests.each do |gig_request|
       %tr
-        %td= gig_request.name
-        %td= gig_request.address
+        %td= decode(gig_request.name)
+        %td= decode(gig_request.address)
         %td= gig_request.phone
-        %td= gig_request.email
+        %td= decode(gig_request.email)
         %td= gig_request.gig_date
         %td= gig_request.gig_time.strftime("%I:%m %p")
         %td= gig_request.gig_duration
