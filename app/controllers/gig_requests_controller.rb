@@ -42,9 +42,9 @@ class GigRequestsController < ApplicationController
   def create
     @gig_request = GigRequest.new(gig_request_params)
     
-    @gig_request.name = encode(@gig_request.name)
-    @gig_request.address = encode(@gig_request.address)
-    @gig_request.email = encode(@gig_request.email)
+    #@gig_request.name = encode(@gig_request.name)
+    #@gig_request.address = encode(@gig_request.address)
+    #@gig_request.email = encode(@gig_request.email)
 
     respond_to do |format|
       if @gig_request.save

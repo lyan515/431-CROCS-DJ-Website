@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180418010203) do
+ActiveRecord::Schema.define(version: 20180422235805) do
 
   create_table "dj_portfolios", force: :cascade do |t|
     t.string   "name"
@@ -28,10 +28,10 @@ ActiveRecord::Schema.define(version: 20180418010203) do
   end
 
   create_table "gig_requests", force: :cascade do |t|
-    t.string   "name"
-    t.string   "address"
-    t.string   "phone"
-    t.string   "email"
+    t.string   "encrypted_name"
+    t.string   "encrypted_address"
+    t.string   "encrypted_phone"
+    t.string   "encrypted_email"
     t.date     "gig_date"
     t.time     "gig_time"
     t.integer  "gig_duration"
@@ -40,10 +40,14 @@ ActiveRecord::Schema.define(version: 20180418010203) do
     t.string   "dj_preferred"
     t.string   "dj_actual"
     t.boolean  "approval"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.boolean  "client_approval"
     t.float    "price"
+    t.string   "encrypted_name_iv"
+    t.string   "encrypted_address_iv"
+    t.string   "encrypted_phone_iv"
+    t.string   "encrypted_email_iv"
   end
 
   create_table "users", force: :cascade do |t|

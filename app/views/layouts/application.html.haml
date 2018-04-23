@@ -3,7 +3,7 @@
   %head
     %title DJs of Aggieland
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
-    = stylesheet_link_tag "style", 'media' => 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'style', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = csrf_meta_tags
@@ -19,7 +19,7 @@
     / Brand and toggle get grouped for better mobile display
     .navbar-header
       %a.navbar-brand{:href => "index.html"}
-        %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 35px; opacity: .35;') 
+        %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 15px; opacity: .35;') 
       // mobile version nav bar
       %div{:style => "padding-top: 18px;"}
 
@@ -47,8 +47,8 @@
 
         
       // %div{:class => "container"}
-=yield
-=render "layouts/footer"
+  =yield
+  =render "layouts/footer"
         
 
 

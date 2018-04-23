@@ -5,10 +5,16 @@ class GigRequest < ActiveRecord::Base
      def to_param
         Hashids.new("calebWillNeverSeeThis").encode(id)
      end
+     
+     secret_key = 'MYUG1N7IBLJ5GU7VPGTSSF8GU963O4AB'
+     attr_encrypted :name, :key => secret_key
+     attr_encrypted :address, :key => secret_key
+     attr_encrypted :phone, :key => secret_key
+     attr_encrypted :email, :key => secret_key
     
      validates :name, presence: true
      validates :address, presence: true
-     validates :email, format: { with: /\A([\w+\-].?)+#[a-z\d\-]+(\~[a-z]+)*\~[a-z]+\z/i, message: ": Incorrect email format"} #regex that checks is the email is valid
+     validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, message: ": Incorrect email format"} #regex that checks is the email is valid
      validates :gig_date, presence: true
      validates :gig_time, presence: true
      validates :gig_duration, numericality: { greater_than: 0,  message: ": Duration must be greather than 1 hour"}
