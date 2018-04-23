@@ -1,0 +1,25 @@
+%nav#bottom-navigation.navbar.navbar-light.bg-light.fixed-bottom.d-none.d-md-block
+  .container
+
+    
+      
+      
+      
+    %p.navbar-text.mr-auto
+      &#169;
+      = link_to "Google", "http://www.google.com" 
+      #{Date.current.year}
+      
+    %div
+      - if user_current
+        - if user_valid
+          Signed in as Admin
+          = link_to "Sign out", signout_path, id: "sign_out"
+          = link_to "Admin Page", gig_requests_path 
+        - else
+          = link_to "Not an Admin: Please log in as an Admin", "/auth/google_oauth2", id: "sign_in"
+      - else
+        = link_to "Admin Login", "/auth/google_oauth2", id: "sign_in"
+        
+    %ul.nav
+      %li.nav-item= link_to "Conditions", "#", class: 'nav-link'
