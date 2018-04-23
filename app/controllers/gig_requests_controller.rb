@@ -84,7 +84,7 @@ class GigRequestsController < ApplicationController
   end
   
   def approve
-    # create_calendar_event
+    create_calendar_event
     set_gig_request
     @gig_request.approval = true
     @gig_request.save
@@ -122,7 +122,7 @@ class GigRequestsController < ApplicationController
     end
     
     def create_calendar_event
-        puts 'in calendar event'
+        puts '********************************************in calendar event'
         if user_current && user_valid
           admin_token = get_admin_token
         end
@@ -142,7 +142,7 @@ class GigRequestsController < ApplicationController
         service = client.discovered_api('calendar', 'v3')
         
         @set_event = client.execute(:api_method => service.events.insert,
-                                :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => true},
+                                :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => false},
                                 :body => JSON.dump(@event),
                                 :headers => {'Content-Type' => 'application/json'})
     end

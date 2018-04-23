@@ -9,45 +9,45 @@
     = csrf_meta_tags
 
 %body
-%nav.navbar.navbar-default.navbar-fixed-top{:id => "nav_bar"}
-  %button#burger.navbar-toggle.collapsed{"button id" => "burger", "aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
-    %span.sr-only Toggle navigation
-    %span.icon-bar
-    %span.icon-bar
-    %span.icon-bar
-  .container
-    / Brand and toggle get grouped for better mobile display
-    .navbar-header
-      %a.navbar-brand{:href => "index.html"}
-        %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 15px; opacity: .35;') 
-      // mobile version nav bar
-      %div{:style => "padding-top: 18px;"}
+  %nav.navbar.navbar-default.navbar-fixed-top{:id => "nav_bar"}
+    %button#burger.navbar-toggle.collapsed{"button id" => "burger", "aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+      %span.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    .container
+      / Brand and toggle get grouped for better mobile display
+      .navbar-header
+        %a.navbar-brand{:href => "index.html"}
+          %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 15px; opacity: 0.5;') 
+        // mobile version nav bar
+        %div{:style => "padding-top: 18px;"}
+  
+         
+      / Collect the nav links, forms, and other content for toggling
+      // desktop version nav bar
+      #bs-example-navbar-collapse-1.collapse.navbar-collapse.collapse{"aria-expanded" => "false", :style => "height: 0px;"}
+        %ul.nav.navbar-nav.navbar-right{:style => "padding-top:5px"}
+          %li{:class => ('active' if request.original_url == request.base_url << "/")}= link_to 'Home'.html_safe, root_path
+          %li{:class => ('active' if request.original_url == request.base_url << "/gig_requests/new"|| request.original_url == request.base_url << "/gig_requests/#{@gig_request.to_param}")}= link_to 'Request a gig', new_gig_request_path
+          %li{:class => ('active' if request.original_url == request.base_url << "/welcome/calendar")}= link_to 'Calendar', welcome_calendar_path
+          %li{:class => ('active' if request.original_url == request.base_url << "/dj_portfolios"|| request.original_url == request.base_url << "/dj_portfolios/#{@dj_portfolio}")}= link_to 'DJ Portfolios', dj_portfolios_path
+  
+  
+  
+      
+%div
 
-       
-    / Collect the nav links, forms, and other content for toggling
-    // desktop version nav bar
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse.collapse{"aria-expanded" => "false", :style => "height: 0px;"}
-      %ul.nav.navbar-nav.navbar-right{:style => "padding-top:5px"}
-        %li.active= link_to 'Home'.html_safe, root_path
-        %li= link_to 'Request a gig', new_gig_request_path
-        %li= link_to 'Calendar', welcome_calendar_path
-        %li= link_to 'DJ Portfolios', dj_portfolios_path
-
-
+#main
+  - if flash[:notice]
+    #notice.message= flash[:notice]
+  - elsif flash[:warning]
+    #warning.message= flash[:warning]
 
     
-    %div
-  
-    #main
-      - if flash[:notice]
-        #notice.message= flash[:notice]
-      - elsif flash[:warning]
-        #warning.message= flash[:warning]
-
-        
-      // %div{:class => "container"}
-  =yield
-  =render "layouts/footer"
+  // %div{:class => "container"}
+=yield
+=render "layouts/footer"
         
 
 
