@@ -12,7 +12,7 @@
   = @gig_request.email
 %p
   %strong Gig date:
-  = @gig_request.gig_date
+  = @gig_request.gig_date.strftime("%B %d, %Y")
 %p
   %strong Gig time:
   = @gig_request.gig_time.strftime("%I:%m %p")
@@ -33,4 +33,4 @@
   = @gig_request.approval
 %p
   %strong Price(Per hour): $
-  = "%.2f" % @gig_request.price
+  = "$%.2f" % @gig_request.price

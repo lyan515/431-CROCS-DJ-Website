@@ -1,12 +1,34 @@
 .hero-image
     = image_tag("header.jpg")
     .hero-text
-        %h1 DJOA
-        %p needs a new site
+        %h1 DJs of Aggieland
+        %p A recognized Texas A&M student organization
 
 
-= link_to image_tag("facebook.png", width: '2%'), 'https://www.facebook.com/DJAPublic/', class: 'nav-link'
-= link_to image_tag("mail.png", width: '2%'), 'mailto:TheDjsOfAggieland@gmail.com?Subject=Inquiries'
-= link_to image_tag("twitter.png", width: '2%'), 'https://twitter.com/TheDJOA'
-// %header#home.home
-//     =link_to image_tag("cover.jpg")
+        
+%section#contact.sections
+    .container
+        .heading-content.text-center
+            .heading-title
+                %h3 Contact Us
+        %div{:style => "text-align:center"}
+            %p
+                %b Email: theDJsOfAggieland@gmail.com
+                %br
+            .col-lg-1.col-md-1.col-sm-1.col-xs-1
+                %p yak
+            .col-lg-2.col-md-2.col-sm-2.col-xs-2
+                %p yak
+            .col-lg-2.col-md-2.col-sm-2.col-xs-2
+                = link_to image_tag("facebook.png", width: '100%'), 'https://www.facebook.com/DJAPublic/', class: 'nav-link', target: :_blank
+            .col-lg-2.col-md-2.col-sm-2.col-xs-2
+                = link_to image_tag("mail.png", width: '100%'), 'mailto:TheDjsOfAggieland@gmail.com?Subject=Inquiries', target: :_blank
+            .col-lg-2.col-md-2.col-sm-2.col-xs-2{:style => "margin-bottom: 35px;"}
+                = link_to image_tag("twitter.png", width: '100%'), 'https://twitter.com/TheDJOA', target: :_blank
+            .col-lg-2.col-md-2.col-sm-2.col-xs-2
+                %p yak
+            .col-lg-1.col-md-1.col-sm-1.col-xs-1
+                %p yak
+                
+-@welcome.dj_portfolios.each do |dj_portfolio|
+    =image_tag dj_portfolio.avatar.thumb.url

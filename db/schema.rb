@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422235805) do
+ActiveRecord::Schema.define(version: 20180424175746) do
 
   create_table "dj_portfolios", force: :cascade do |t|
     t.string   "name"
@@ -25,7 +25,10 @@ ActiveRecord::Schema.define(version: 20180422235805) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "genres"
+    t.integer  "welcome_id"
   end
+
+  add_index "dj_portfolios", ["welcome_id"], name: "index_dj_portfolios_on_welcome_id"
 
   create_table "gig_requests", force: :cascade do |t|
     t.string   "encrypted_name"
@@ -58,6 +61,12 @@ ActiveRecord::Schema.define(version: 20180422235805) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "welcomes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "dummy"
   end
 
 end

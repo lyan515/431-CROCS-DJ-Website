@@ -7,49 +7,76 @@
       %ul
         - @gig_request.errors.full_messages.each do |message|
           %li= message
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :address
-    %br/
-    = f.text_field :address
-  .field
-    = f.label :phone
-    %br/
-    = f.text_field :phone
-  .field
-    = f.label :email
-    %br/
-    = f.text_field :email
-  .field
-    = f.label :gig_date
-    %br/
-    = f.date_select :gig_date, start_year: Date.today.year
-  .field
-    = f.label :gig_time
-    %br/
-    = f.time_select :gig_time
-  .field
-    = f.label :gig_duration
-    %br/
-    = f.number_field :gig_duration
-  .field
-    = f.label "Check box if you want to rent a light system."
-    %br/
-    = f.check_box :light_rent
-  .field
-    = f.label "Check box if you want to rent a speaker system."
-    %br/
-    = f.check_box :speaker_rent
-  .field
-    = f.label "Preferred DJ"
-    %br/
-    = f.text_field :dj_preferred
-  .field
-    = f.label "Price(per hour)"
-    %br/
-    = f.number_field :price, step: :any
-  .actions
-    = f.submit
+  .row
+    .col-lg-3.col-lg-offset-3.col-md-3.col-md-offset-3.col-sm-12.col-xs-12
+      .field
+        %br
+        = f.label :name
+        %br/
+        = f.text_field :name
+    .col-lg-3.col-md-3.col-sm-12.col-xs-12
+      .field
+        %br
+        = f.label :address
+        %br/
+        = f.text_field :address
+  .row
+    .col-lg-3.col-lg-offset-3.col-md-3.col-md-offset-3.col-sm-12.col-xs-12
+      .field
+        %br
+        = f.label :phone
+        %br/
+        = f.text_field :phone
+    .col-lg-3.col-md-3.col-sm-12.col-xs-12
+      .field
+        %br
+        = f.label :email
+        %br/
+        = f.text_field :email
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .field
+        %br
+        = f.label :gig_date
+        %br/
+        = f.date_select :gig_date, start_year: Date.today.year
+      .field
+        %br
+        = f.label :gig_time
+        %br/
+        = f.time_select :gig_time, {:ampm => true, html5: true}
+      .field
+        %br
+        = f.label :gig_duration
+        %br/
+        = f.number_field :gig_duration
+        %br
+    .row
+      .col-lg-3.col-lg-offset-3.col-md-3.col-md-offset-3.col-sm-12.col-xs-12
+        .field
+          %br
+          = f.label "Do we need to bring lights?"
+          %br/
+          = f.check_box :light_rent
+      .col-lg-3.col-md-3.col-sm-12.col-xs-12
+        .field
+          %br
+          = f.label "Do we need to bring speakers?"
+          %br/
+          = f.check_box :speaker_rent
+    .row
+      .field
+        %br
+        = f.label "Preferred DJ (optional)"
+        %br/
+        = f.text_field :dj_preferred
+      .field
+        = f.label "Budget"
+        %br/
+        = f.number_field :price, step: :any
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        .actions
+          .submit-btn
+            %br
+            = f.submit

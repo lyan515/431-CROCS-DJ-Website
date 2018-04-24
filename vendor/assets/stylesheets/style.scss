@@ -134,7 +134,7 @@ h2,
 h3 {
     font-weight: 500;
     margin: 0;
-    color: red;
+    color: white;
 }
 h4,
 h5 {
@@ -143,8 +143,8 @@ h5 {
     line-height: 2rem;
 }
 h1 {
-    font-size: 3rem;
-    line-height: 5rem;
+    font-size: 6rem;
+    line-height: 6rem;
     font-weight: 300;
 }
 h2 {
@@ -452,7 +452,7 @@ input:-ms-input-placeholder {
 .navbar-default {
     background-color: var(--dark-blue);
     border-color:0;
-    height:70px;
+    height:55px;
 }
 
 .navbar {
@@ -469,7 +469,7 @@ input:-ms-input-placeholder {
 }
 
 .navbar-default .navbar-nav>li>a:hover {
-    color: var(--dark-blue);
+    color: var(--lightest-blue);
 }
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
     background-color: var(--medium-blue);
@@ -486,7 +486,7 @@ input:-ms-input-placeholder {
     width: 100%;
     height: auto;
     max-width: 100%;
-    opacity: 0.5;
+    // opacity: 0.5;
 }
 
 /* Place text in the middle of the image */
@@ -494,15 +494,17 @@ input:-ms-input-placeholder {
     position: absolute;
     // top: 25%;
     // left: 25%;
-    left: 40px;
+    left: 100px;
     top: 100px;
-    text-shadow: 2px 2px 10px black;
+    padding: 20px;
+    // text-shadow: 2px 2px 10px black;
     color: white;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* collapse thing. comment this out to toggle it */
 #bs-example-navbar-collapse-1{
-	/*margin-top: 17px;*/
+	margin-top: 8px;
 }
 /*For Home Section*/
 
@@ -1269,13 +1271,14 @@ input:-ms-input-placeholder {
 }
 
 
-/*Contact Form Area*/
+/*gig request*/
 
 #contact form{
     padding:20px 0;
 }
 
-.form-control {
+.field {
+    text-align: center;
     font-size: 14px;
     color: #000;
     background-color: transparent;
@@ -1283,10 +1286,9 @@ input:-ms-input-placeholder {
     border:0;
     border-radius:0;
     box-shadow:none;
-    border-top:3px solid #000;
 
 }
-.form-control.txt-area{
+.field.txt-area{
     border-bottom:2px solid #5b5b5b;
     font-size: 15px;
     font-weight: 500;

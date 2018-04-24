@@ -19,7 +19,7 @@
       / Brand and toggle get grouped for better mobile display
       .navbar-header
         %a.navbar-brand{:href => "index.html"}
-          %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 15px; opacity: 0.5;') 
+          %img.logobrand= link_to image_tag("DJOA futura.png", style:'padding-top: 10px; opacity: 0.5;'), root_path 
         // mobile version nav bar
         %div{:style => "padding-top: 18px;"}
   
@@ -29,7 +29,7 @@
       #bs-example-navbar-collapse-1.collapse.navbar-collapse.collapse{"aria-expanded" => "false", :style => "height: 0px;"}
         %ul.nav.navbar-nav.navbar-right{:style => "padding-top:5px"}
           %li{:class => ('active' if request.original_url == request.base_url << "/")}= link_to 'Home'.html_safe, root_path
-          %li{:class => ('active' if request.original_url == request.base_url << "/gig_requests/new"|| request.original_url == request.base_url << "/gig_requests/#{@gig_request.to_param}")}= link_to 'Request a gig', new_gig_request_path
+          %li{:class => ('active' if request.original_url == request.base_url << "/gig_requests/new")}= link_to 'Request a gig', new_gig_request_path
           %li{:class => ('active' if request.original_url == request.base_url << "/welcome/calendar")}= link_to 'Calendar', welcome_calendar_path
           %li{:class => ('active' if request.original_url == request.base_url << "/dj_portfolios"|| request.original_url == request.base_url << "/dj_portfolios/#{@dj_portfolio}")}= link_to 'DJ Portfolios', dj_portfolios_path
   

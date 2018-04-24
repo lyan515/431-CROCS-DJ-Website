@@ -8,7 +8,7 @@ class GigRequestsController < ApplicationController
   # GET /gig_requests.json
   
   def index
-    if !user_current#no unauthorized user should be on this page
+    if !user_current #no unauthorized user should be on this page
       redirect_to root_path
     elsif !user_valid
       redirect_to root_path
@@ -17,7 +17,7 @@ class GigRequestsController < ApplicationController
     end
     
     @sort = params[:sort]
-    @gig_requests = GigRequest.all.order(@sort)
+    @gig_requests = GigRequest.all.order(@sort).reverse
     
   end
 
@@ -133,7 +133,7 @@ class GigRequestsController < ApplicationController
           'description' => 'Sample description',
           'location' => 'TAMU',
           'start' => { 'dateTime' => '2018-04-20T17:00:00-07:00' },
-          'end' => { 'dateTime' => '2018-04-20T17:00:00-07:00' },
+          'end' => { 'dateTime' => '2018-04-20T20:00:00-07:00' },
           'attendees' => [ { "email" => 'calebWillNeverSeeThis@example.com' },
           { "email" =>'jimmyWillNeverSeeThis@example.com' } ] }
         
@@ -141,9 +141,14 @@ class GigRequestsController < ApplicationController
         client.authorization.access_token = admin_token
         service = client.discovered_api('calendar', 'v3')
         
-        @set_event = client.execute(:api_method => service.events.insert,
+        # result = client.insert_event('primary', @event)
+        # print result.data.id
+        
+        set_event = client.execute(:api_method => service.events.insert,
                                 :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => false},
                                 :body => JSON.dump(@event),
                                 :headers => {'Content-Type' => 'application/json'})
+        
+        print set_event.data.id
     end
 end
