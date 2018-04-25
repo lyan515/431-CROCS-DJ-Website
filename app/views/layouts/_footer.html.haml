@@ -1,27 +1,22 @@
 %footer.footer
     %div
       
-    %p.navbar-text.mr-auto
-      &#169;
-      = link_to "DJs of Aggieland", "http://www.google.com" 
-      #{Date.current.year}
-    .container
       
     %p.navbar-text.mr-auto
-      &#169;
-      = link_to "Google", "http://www.google.com" 
-      #{Date.current.year}
+        &#169;
+        = link_to "Google", "http://www.google.com" 
+        #{Date.current.year}
       
     %div
-      - if user_current
-        - if user_valid
-          Signed in as Admin
-          = link_to "Sign out", signout_path, id: "sign_out"
-          = link_to "Admin Page", gig_requests_path 
+        - if user_current
+            - if user_valid
+                Signed in as Admin
+                = link_to "Sign out", signout_path, id: "sign_out"
+                = link_to "Admin Page", gig_requests_path 
+            - else
+                = link_to "Not an Admin: Please log in as an Admin", "/auth/google_oauth2", id: "sign_in"
         - else
-          = link_to "Not an Admin: Please log in as an Admin", "/auth/google_oauth2", id: "sign_in"
-      - else
-        = link_to "Admin Login", "/auth/google_oauth2", id: "sign_in"
+            = link_to "Admin Login", "/auth/google_oauth2", id: "sign_in"
         
     %ul.nav
-      %li.nav-item= link_to "Conditions", "#", class: 'nav-link'
+        %li.nav-item= link_to "Conditions", "#", class: 'nav-link'
