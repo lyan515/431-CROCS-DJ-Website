@@ -7,6 +7,6 @@ class DjPortfolio < ActiveRecord::Base
     after_initialize :init
      
     def init
-      self.welcome_id ||= 4
+      self.welcome_id ||= 1
     end
 end

@@ -1,35 +1,40 @@
 - 3.times do
   %br
-%p
-  %strong Name:
-  = @dj_portfolio.name
-%p
-  = image_tag @dj_portfolio.avatar.profile.url
-%p
-  %strong Bio:
-  = @dj_portfolio.bio
-%p
-  %strong Facebook link:
-  = @dj_portfolio.facebook_link
-%p
-  %strong Instagram link:
-  = @dj_portfolio.instagram_link
-%p
-  %strong Twitter link:
-  = @dj_portfolio.twitter_link
-%p
-  %strong Soundcloud link:
-  = @dj_portfolio.soundcloud_link
-%p
-  %strong Mixcloud link:
-  = @dj_portfolio.mixcloud_link
-%p
-  %strong genres:
-  = @dj_portfolio.genres.join(", ") 
-
--if user_current && user_valid
-  = link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio)
-  = link_to 'Delete', @dj_portfolio, method: :delete, data: { confirm: 'Are you sure?' }
-  = link_to 'Back', dj_portfolios_path
--else
-  = link_to 'Back', dj_portfolios_path
+  
+.container
+  .row
+    .col-lg-2.col-lg-offset-4.col-md-12.col-sm-12.col-xs-12
+      .profile-pic
+        = image_tag @dj_portfolio.avatar.profile.url
+    .col-lg-3.col-md-12.col-sm-12.col-xs-12
+      %h3
+        = @dj_portfolio.name
+      %h5
+        = @dj_portfolio.genres.join(", ")
+      %p
+        = @dj_portfolio.bio
+    .link-icon
+      = link_to image_tag("facebook.png"), @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
+      // = @dj_portfolio.facebook_link
+    %p
+      %strong Instagram link:
+      = @dj_portfolio.instagram_link
+    %p
+      %strong Twitter link:
+      = @dj_portfolio.twitter_link
+    %p
+      %strong Soundcloud link:
+      = @dj_portfolio.soundcloud_link
+    %p
+      %strong Mixcloud link:
+      = @dj_portfolio.mixcloud_link
+    %p
+      %strong genres:
+      = @dj_portfolio.genres.join(", ") 
+    
+    -if user_current && user_valid
+      = link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio)
+      = link_to 'Delete', @dj_portfolio, method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to 'Back', dj_portfolios_path
+    -else
+      = link_to 'Back', dj_portfolios_path

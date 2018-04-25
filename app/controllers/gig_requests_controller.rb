@@ -13,11 +13,26 @@ class GigRequestsController < ApplicationController
     elsif !user_valid
       redirect_to root_path
     else
+      
+    end
+    
+    #set the session preferences for sorting
+    if params[:sort]
+      @sort_sesh = params[:sort]
+      session[:sort] = @sort_sesh
+    else
+      @sort_sesh = session[:sort] || []
+    end
+    
+    #sort and filter request table
+    if params[:sort] == "encrypted_name"
+      @gig_requests = GigRequest.all.order(@sort_sesh)
+    elsif params[:sort]
+      @gig_requests = GigRequest.all.order(@sort_sesh).reverse
+    else
       @gig_requests = GigRequest.all
     end
     
-    @sort = params[:sort]
-    @gig_requests = GigRequest.all.order(@sort).reverse
     
   end
 

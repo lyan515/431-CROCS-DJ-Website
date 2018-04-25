@@ -7,6 +7,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
     = csrf_meta_tags
+    - if content_for?(:head)
+      = yield(:head)
+
 
 %body
   %nav.navbar.navbar-default.navbar-fixed-top{:id => "nav_bar"}
@@ -47,7 +50,8 @@
     
   // %div{:class => "container"}
 =yield
-=render "layouts/footer"
+
+/=render "layouts/footer"
         
 
 

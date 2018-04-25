@@ -1,11 +1,19 @@
+- content_for :head do
+    %meta{:content => "no-cache", :name => "turbolinks-cache-control"}/
 .hero-image
     = image_tag("header.jpg")
     .hero-text
         %h1 DJs of Aggieland
         %p A recognized Texas A&M student organization
 
-
-        
+.members
+    .container
+        .dj_carousel
+            -@welcome.each do |welcome|
+                -welcome.dj_portfolios.each do |dj_portfolio|
+                    %div
+                        =image_tag dj_portfolio.avatar.carousel.url  
+           
 %section#contact.sections
     .container
         .heading-content.text-center
@@ -30,5 +38,15 @@
             .col-lg-1.col-md-1.col-sm-1.col-xs-1
                 %p yak
                 
--@welcome.dj_portfolios.each do |dj_portfolio|
-    =link_to image_tag dj_portfolio.avatar.thumb.url, gig
+%script{:src => "js/jquery-1.11.3.min.js"}
+%script{:src => "js/slick/slick.min.js"}
+%script{:src => "js/main.js"}
+:javascript
+    $(document).ready(function(){
+    $('.dj_carousel').slick({
+        slidesToShow: 3,
+        adpativeHeight: true,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        });
+    });
