@@ -137,33 +137,33 @@ class GigRequestsController < ApplicationController
     end
     
     def create_calendar_event
-        puts '********************************************in calendar event'
-        if user_current && user_valid
-          admin_token = get_admin_token
-        end
-        # puts test_token
-        
-        @event = {
-          'summary' => 'Sample Event',
-          'description' => 'Sample description',
-          'location' => 'TAMU',
-          'start' => { 'dateTime' => '2018-04-20T17:00:00-07:00' },
-          'end' => { 'dateTime' => '2018-04-20T20:00:00-07:00' },
-          'attendees' => [ { "email" => 'calebWillNeverSeeThis@example.com' },
-          { "email" =>'jimmyWillNeverSeeThis@example.com' } ] }
-        
-        client = Google::APIClient.new
-        client.authorization.access_token = admin_token
-        service = client.discovered_api('calendar', 'v3')
-        
-        # result = client.insert_event('primary', @event)
-        # print result.data.id
-        
-        set_event = client.execute(:api_method => service.events.insert,
-                                :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => false},
-                                :body => JSON.dump(@event),
-                                :headers => {'Content-Type' => 'application/json'})
-        
-        print set_event.data.id
+       # puts '********************************************in calendar event'
+       # if user_current && user_valid
+       #   admin_token = get_admin_token
+       # end
+       # # puts test_token
+       # 
+       # @event = {
+       #   'summary' => 'Sample Event',
+       #   'description' => 'Sample description',
+       #   'location' => 'TAMU',
+       #   'start' => { 'dateTime' => '2018-04-20T17:00:00-07:00' },
+       #   'end' => { 'dateTime' => '2018-04-20T20:00:00-07:00' },
+       #   'attendees' => [ { "email" => 'calebWillNeverSeeThis@example.com' },
+       #   { "email" =>'jimmyWillNeverSeeThis@example.com' } ] }
+       # 
+       # client = Google::APIClient.new
+       # client.authorization.access_token = admin_token
+       # service = client.discovered_api('calendar', 'v3')
+       # 
+       # # result = client.insert_event('primary', @event)
+       # # print result.data.id
+       # 
+       # set_event = client.execute(:api_method => service.events.insert,
+       #                         :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => false},
+       #                         :body => JSON.dump(@event),
+       #                         :headers => {'Content-Type' => 'application/json'})
+       # 
+       # print set_event.data.id
     end
 end

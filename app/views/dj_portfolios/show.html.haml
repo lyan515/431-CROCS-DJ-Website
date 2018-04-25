@@ -14,20 +14,12 @@
       %p
         = @dj_portfolio.bio
     .link-icon
-      = link_to image_tag("facebook.png"), @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
-      // = @dj_portfolio.facebook_link
-    %p
-      %strong Instagram link:
-      = @dj_portfolio.instagram_link
-    %p
-      %strong Twitter link:
-      = @dj_portfolio.twitter_link
-    %p
-      %strong Soundcloud link:
-      = @dj_portfolio.soundcloud_link
-    %p
-      %strong Mixcloud link:
-      = @dj_portfolio.mixcloud_link
+      /= link_to image_tag("facebook.png"), @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
+      = link_to image_tag("facebook.png", width: '15%'),  @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
+      = link_to image_tag("instagram.png", width: '15%'),  @dj_portfolio.instagram_link, class: 'nav-link', target: :_blank
+      = link_to image_tag("twitter.png", width: '15%'),  @dj_portfolio.twitter_link, class: 'nav-link', target: :_blank
+      = link_to image_tag("soundcloud.png", width: '15%'),  @dj_portfolio.soundcloud_link, class: 'nav-link', target: :_blank
+      = link_to image_tag("mixcloud.png", width: '15%'),  @dj_portfolio.mixcloud_link, class: 'nav-link', target: :_blank
     %p
       %strong genres:
       = @dj_portfolio.genres.join(", ") 

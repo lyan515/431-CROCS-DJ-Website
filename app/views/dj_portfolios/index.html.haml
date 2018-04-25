@@ -9,25 +9,10 @@
             = image_tag dj_portfolio.avatar.thumb.url
           .col-lg-8.col-md-8.col-sm-8.col-xs-8
             %br
-            %h3{:style => "text-align: left" }= dj_portfolio.name
+            %h3{:style => "text-align: left" }= link_to dj_portfolio.name, dj_portfolio
             %p= dj_portfolio.genres.join(", ")
         %br
       
-  .row
-    %table{:align => "center"}
-      %thead
-        %tr
-          %th Profile Picture
-          %th Name
-          %th Genres
-          %th{:colspan => "9"}
-      %tbody
-        - @dj_portfolios.each do |dj_portfolio|
-          %tr
-            %td= image_tag dj_portfolio.avatar.thumb.url
-            %td= dj_portfolio.name
-            %td= dj_portfolio.genres.join(", ") 
-            %td= link_to 'Show', dj_portfolio
   
   
   -if user_current && user_valid

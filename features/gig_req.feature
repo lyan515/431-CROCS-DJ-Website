@@ -50,10 +50,20 @@ Given I am on the Gig Request Final page
 When I click the Approve Final link
 Then I should see Final Approval Success
 
-Scenario: Edit a current porfolio
+Scenario: Edit a current request
 Given I am on the Gig Request Index page 
 When I click the Edit Gig Request link
 And I fill out the form with the following attributes:
       | gig_request_name          | Jahn Smath                 |
 And I click the Update link
 Then I should see Request Update Success
+
+Scenario: Filter gig requests by name
+Given I am on the Gig Request Index page 
+When I click the Sort By Name link
+Then I should see Filter Success
+
+Scenario: Filter gig requests by name
+Given I am on the Gig Request Index page 
+When I click the Sort By Name link
+Then I should see Filter Success

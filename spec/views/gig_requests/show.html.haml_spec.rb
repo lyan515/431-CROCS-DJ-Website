@@ -20,7 +20,7 @@ RSpec.describe "gig_requests/show", type: :view do
     expect(rendered).to match(/Address/)
     expect(rendered).to match(/Phone/)
     expect(rendered).to match(/Email/)
-    expect(rendered).to match(/2000-01-01/)
+    expect(rendered).to match(/January 01, 2000/)
     expect(rendered).to match(/01:01 AM/)
   end
 end

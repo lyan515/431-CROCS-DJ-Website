@@ -50,9 +50,10 @@ When (/^I click the (.*?) link$/) do |link|
         visit edit_dj_portfolio_path(1)
     elsif link == "Edit Gig Request"
         visit edit_gig_request_path(37) 
+    elsif link == "Sort By Name"
+       find(:xpath, "//a[@href='/gig_requests?sort=encrypted_name']").click
     end
 end
-
 Then (/^I should see (.*?)$/) do |arg|
   if arg == "Required Fields Missing Gig Request"
        expect(page).to have_current_path(gig_requests_path)# this is concerning... Gig request is not going back to new after a failed attempt, works for now though
@@ -76,6 +77,8 @@ Then (/^I should see (.*?)$/) do |arg|
        expect(page).to have_current_path(gig_requests_approve_path(37))
   elsif arg == "Deny Page" 
        expect(page).to have_current_path(gig_requests_deny_path(37))
+  elsif arg == "Filter Sucess"
+       expect(page).to have_current_path(gig_requests_path)
   end
 end
 

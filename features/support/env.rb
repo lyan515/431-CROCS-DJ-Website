@@ -40,6 +40,8 @@ Before do
     GigRequest.create!(gig_request)
   end
   
+  Welcome.create!({:dummy => "dummy"})
+  
   user_test = [{:uid => '113054678615933156222'}]
   User.create!(user_test)
   
