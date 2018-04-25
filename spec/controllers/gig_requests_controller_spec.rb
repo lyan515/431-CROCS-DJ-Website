@@ -110,7 +110,7 @@ RSpec.describe GigRequestsController, type: :controller do
         gig_request = GigRequest.create! valid_attributes
         put :update, {:id => gig_request.to_param, :gig_request => new_attributes}, valid_session
         gig_request.reload
-        expect(assigns(:gig_request).attributes['name']).to match(new_attributes[:name])
+        expect(assigns(:gig_request).attributes['encrypted_name']).to match(new_attributes[:name])
       end
 
       it "assigns the requested gig_request as @gig_request" do
