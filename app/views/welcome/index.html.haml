@@ -5,16 +5,28 @@
     .hero-text
         %h1 DJs of Aggieland
         %p A recognized Texas A&M student organization
+  
+.row
+    %br
+    %h2{:style => "text-align: center"} Members Available for Gigs
+    .separator 
 
-.members
+%section.members.sections
     .container
         .dj_carousel
             -@welcome.each do |welcome|
                 -welcome.dj_portfolios.each do |dj_portfolio|
                     %div
-                        =image_tag dj_portfolio.avatar.carousel.url  
-           
-%section#contact.sections
+                        =link_to dj_portfolio do
+                            .fade-on-hover
+                                =image_tag dj_portfolio.avatar.carousel.url
+                                %p= dj_portfolio.name
+                        
+        .row{:align => "center"}
+            .btn.btn-primary.abt-btn
+                = link_to 'See All', dj_portfolios_path, :class => "btn"
+
+%section#contact.sections{:style => "background-color: var(--lightest-blue);"}
     .container
         .heading-content.text-center
             .heading-title
@@ -24,19 +36,19 @@
                 %b Email: theDJsOfAggieland@gmail.com
                 %br
             .col-lg-1.col-md-1.col-sm-1.col-xs-1
-                %p yak
+                
             .col-lg-2.col-md-2.col-sm-2.col-xs-2
-                %p yak
+               
             .col-lg-2.col-md-2.col-sm-2.col-xs-2
-                = link_to image_tag("facebook.png", width: '100%'), 'https://www.facebook.com/DJAPublic/', class: 'nav-link', target: :_blank
+                .homepage-icon
+                    = link_to image_tag("facebook.png"), 'https://www.facebook.com/DJAPublic/', class: 'nav-link', target: :_blank
             .col-lg-2.col-md-2.col-sm-2.col-xs-2
-                = link_to image_tag("mail.png", width: '100%'), 'mailto:TheDjsOfAggieland@gmail.com?Subject=Inquiries', target: :_blank
+                .homepage-icon
+                    = link_to image_tag("mail.png"), 'mailto:TheDjsOfAggieland@gmail.com?Subject=Inquiries', target: :_blank
             .col-lg-2.col-md-2.col-sm-2.col-xs-2{:style => "margin-bottom: 35px;"}
-                = link_to image_tag("twitter.png", width: '100%'), 'https://twitter.com/TheDJOA', target: :_blank
-            .col-lg-2.col-md-2.col-sm-2.col-xs-2
-                %p yak
-            .col-lg-1.col-md-1.col-sm-1.col-xs-1
-                %p yak
+                .homepage-icon
+                    = link_to image_tag("twitter.png"), 'https://twitter.com/TheDJOA', target: :_blank
+
 
 
 /This is bad practce, but at the moment, it is the only way the carousel works.               

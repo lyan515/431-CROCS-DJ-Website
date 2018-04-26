@@ -7,41 +7,46 @@
       %ul
         - @dj_portfolio.errors.full_messages.each do |message|
           %li= message
-  .field
-    = f.label :avatar
-    %br/
-    = f.file_field :avatar
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :bio
-    %br/
-    = f.text_area :bio, :cols => 80, :rows => 10
-  .field
-    = f.label :facebook_link
-    %br/
-    = f.text_field :facebook_link
-  .field
-    = f.label :instagram_link
-    %br/
-    = f.text_field :instagram_link
-  .field
-    = f.label :twitter_link
-    %br/
-    = f.text_field :twitter_link
-  .field
-    = f.label :soundcloud_link
-    %br/
-    = f.text_field :soundcloud_link
-  .field
-    = f.label :mixcloud_link
-    %br/
-    = f.text_field :mixcloud_link
-  .field
-    = f.label :genres
-    %br/
-    = f.text_field :genres
-  .actions
-    = f.submit
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .field
+        = f.label :avatar
+    .col-lg-7.col-lg-offset-5.col-md-7.col-md-offset-5.col-sm-7.col-sm-offset-5.col-xs-7.col-xs-offset-5
+      .field
+        = f.file_field :avatar
+  .row
+    .col-lg-12.col-md-12.col-sm-12.col-xs-12
+      .field
+        = f.label :name
+        %br/
+        = f.text_field :name
+      .field
+        = f.label :bio
+        %br/
+        = f.text_area :bio, :cols => 80, :rows => 10
+      .field
+        = f.label :facebook_link
+        %br/
+        = f.text_field :facebook_link
+      .field
+        = f.label :instagram_link
+        %br/
+        = f.text_field :instagram_link
+      .field
+        = f.label :twitter_link
+        %br/
+        = f.text_field :twitter_link
+      .field
+        = f.label :soundcloud_link
+        %br/
+        = f.text_field :soundcloud_link
+      .field
+        = f.label :mixcloud_link
+        %br/
+        = f.text_field :mixcloud_link
+      .field
+        = f.label :genres
+        %br/
+        = f.text_field :genres
+      .actions{:align => "center"}
+        = f.submit

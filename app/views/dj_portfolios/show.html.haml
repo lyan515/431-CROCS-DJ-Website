@@ -1,32 +1,42 @@
-- 3.times do
-  %br
-  
-.container
-  .row
-    .col-lg-2.col-lg-offset-4.col-md-12.col-sm-12.col-xs-12
+.sections
+  .container{:align => "center"}
+    .row
       .profile-pic
         = image_tag @dj_portfolio.avatar.profile.url
-    .col-lg-3.col-md-12.col-sm-12.col-xs-12
-      %h3
-        = @dj_portfolio.name
-      %h5
-        = @dj_portfolio.genres.join(", ")
-      %p
-        = @dj_portfolio.bio
-    .link-icon
-      /= link_to image_tag("facebook.png"), @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
-      = link_to image_tag("facebook.png", width: '15%'),  @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
-      = link_to image_tag("instagram.png", width: '15%'),  @dj_portfolio.instagram_link, class: 'nav-link', target: :_blank
-      = link_to image_tag("twitter.png", width: '15%'),  @dj_portfolio.twitter_link, class: 'nav-link', target: :_blank
-      = link_to image_tag("soundcloud.png", width: '15%'),  @dj_portfolio.soundcloud_link, class: 'nav-link', target: :_blank
-      = link_to image_tag("mixcloud.png", width: '15%'),  @dj_portfolio.mixcloud_link, class: 'nav-link', target: :_blank
-    %p
-      %strong genres:
-      = @dj_portfolio.genres.join(", ") 
+    .row
+      .col-lg-4.col-lg-offset-4.col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.col-xs-8.col-xs-offset-2
+        %h3
+          = @dj_portfolio.name
+        %p.lightbg{:align => "left"}
+          = @dj_portfolio.bio
+        %h5
+          = @dj_portfolio.genres.join(", ")
+    %br
+    .separator
     
-    -if user_current && user_valid
-      = link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio)
-      = link_to 'Delete', @dj_portfolio, method: :delete, data: { confirm: 'Are you sure?' }
-      = link_to 'Back', dj_portfolios_path
-    -else
-      = link_to 'Back', dj_portfolios_path
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12{:align => "center"}
+        %h6= "Connect with " + @dj_portfolio.name
+    .row
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12{:align => "center"}
+        .link-icon
+          -if @dj_portfolio.facebook_link != ""
+            = link_to image_tag("facebook.png", width: '15%'),  @dj_portfolio.facebook_link, class: 'nav-link', target: :_blank
+          -if @dj_portfolio.instagram_link != ""
+            = link_to image_tag("instagram.png", width: '15%'),  @dj_portfolio.instagram_link, class: 'nav-link', target: :_blank
+          -if @dj_portfolio.twitter_link != ""
+            = link_to image_tag("twitter.png", width: '15%'),  @dj_portfolio.twitter_link, class: 'nav-link', target: :_blank
+          -if @dj_portfolio.soundcloud_link != ""
+            = link_to image_tag("soundcloud.png", width: '15%'),  @dj_portfolio.soundcloud_link, class: 'nav-link', target: :_blank
+          -if @dj_portfolio.mixcloud_link != ""
+            = link_to image_tag("mixcloud.png", width: '15%'),  @dj_portfolio.mixcloud_link, class: 'nav-link', target: :_blank
+  
+    .row{:align => "center"}  
+      -if user_current && user_valid
+        %br
+        %p Admin actions:
+        = link_to 'Edit', edit_dj_portfolio_path(@dj_portfolio)
+        = link_to 'Delete', @dj_portfolio, method: :delete, data: { confirm: 'Are you sure?' }
+        = link_to 'Back', dj_portfolios_path
+      -else
+        = link_to 'Back', dj_portfolios_path

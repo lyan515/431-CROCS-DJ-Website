@@ -2,10 +2,6 @@ class GigRequestsController < ApplicationController
   before_action :set_gig_request, only: [:show, :edit, :update, :destroy]
   include ApplicationHelper
   include GigRequestsHelper
-  # require 'google/api_client'
-  
-  # GET /gig_requests
-  # GET /gig_requests.json
   
   def index
     if !user_current #no unauthorized user should be on this page
@@ -137,33 +133,31 @@ class GigRequestsController < ApplicationController
     end
     
     def create_calendar_event
-       # puts '********************************************in calendar event'
-       # if user_current && user_valid
-       #   admin_token = get_admin_token
-       # end
-       # # puts test_token
-       # 
-       # @event = {
-       #   'summary' => 'Sample Event',
-       #   'description' => 'Sample description',
-       #   'location' => 'TAMU',
-       #   'start' => { 'dateTime' => '2018-04-20T17:00:00-07:00' },
-       #   'end' => { 'dateTime' => '2018-04-20T20:00:00-07:00' },
-       #   'attendees' => [ { "email" => 'calebWillNeverSeeThis@example.com' },
-       #   { "email" =>'jimmyWillNeverSeeThis@example.com' } ] }
-       # 
-       # client = Google::APIClient.new
-       # client.authorization.access_token = admin_token
-       # service = client.discovered_api('calendar', 'v3')
-       # 
-       # # result = client.insert_event('primary', @event)
-       # # print result.data.id
-       # 
-       # set_event = client.execute(:api_method => service.events.insert,
-       #                         :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => false},
-       #                         :body => JSON.dump(@event),
-       #                         :headers => {'Content-Type' => 'application/json'})
-       # 
-       # print set_event.data.id
+        if user_current && user_valid
+          admin_token = get_admin_token
+        end
+        
+        id = Hashids.new("calebWillNeverSeeThis").decode(params[:id]).try(:first)
+        @gig_request = GigRequest.find(id)
+        summary = @gig_request.name + "\'s Event"
+        start_time = "Event starts at " + (@gig_request.gig_time + (7*60*60)).to_s
+        
+        @event = {
+          'summary' => summary,
+          'description' => start_time,
+          'location' => @gig_request.address,
+          'start' => { 'date' => @gig_request.gig_date },
+          'end' => { 'date' => @gig_request.gig_date },
+          'attendees' => [ { "email" => @gig_request.email } ] }
+        
+        client = Google::APIClient.new
+        client.authorization.access_token = admin_token
+        service = client.discovered_api('calendar', 'v3')
+        
+        set_event = client.execute(:api_method => service.events.insert,
+                                :parameters => {'calendarId' => 'crocs431@gmail.com', 'sendNotifications' => false},
+                                :body => JSON.dump(@event),
+                                :headers => {'Content-Type' => 'application/json'})
+        
     end
 end
