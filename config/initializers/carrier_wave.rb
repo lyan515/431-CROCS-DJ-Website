@@ -7,8 +7,8 @@ CarrierWave.configure do |config|
 
   config.fog_credentials = {
     :provider               => 'AWS',                        # required
-    :aws_access_key_id      => 'AKIAI7NRU75PUBCAUREA',                        # required
-    :aws_secret_access_key  => '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',                     # required
+    :aws_access_key_id      => 'AKIAJN6TN4KQWE4P3MWQ',                        # required
+    :aws_secret_access_key  => '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',                     # required
     :region                 => 'us-east-2',                  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'avatarpicbucket'                             # required
