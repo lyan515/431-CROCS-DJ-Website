@@ -16,3 +16,10 @@
 !/log/.keep
 /tmp
 log
+
+#ignore .env
+.env
+.env.example
+.env.local
+.env.staging
+

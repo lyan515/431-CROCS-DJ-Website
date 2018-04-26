@@ -46,9 +46,13 @@ gem 'attr_encrypted'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'themoviedb'
+#for static image storage
+gem 'aws-sdk', '~> 2'
+
+
 gem 'hashids'
 gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
 gem 'mini_magick'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
