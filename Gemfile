@@ -52,7 +52,7 @@ gem 'aws-sdk', '~> 2'
 
 gem 'hashids'
 gem 'carrierwave', '~> 1.0'
-gem 'fog-aws'
+gem 'fog'
 gem 'mini_magick'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
