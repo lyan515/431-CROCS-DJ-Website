@@ -6,10 +6,10 @@ CarrierWave.configure do |config|
   config.cache_dir = 'carrierwave' # ...two lines
 
   config.fog_credentials = {
-    :provider               => 'AWS',                        # required
-    :aws_access_key_id      => 'AKIAJZQNXXMSPVZML6UQ',                        # required
-    :aws_secret_access_key  => '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',                     # required
-    :region                 => 'us-east-2',                  # optional, defaults to 'us-east-1'
+    :provider               => '',                        # required
+    :aws_access_key_id      => '',                        # required
+    :aws_secret_access_key  => '',                     # required
+    :region                 => '',                  # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'avatarpicbucket'                             # required
   config.fog_public     = false                                   # optional, defaults to true
