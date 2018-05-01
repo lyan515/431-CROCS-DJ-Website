@@ -49,6 +49,8 @@ gem 'attr_encrypted'
 #for static image storage
 gem 'aws-sdk', '~> 2'
 
+
+gem 'hashids'
 gem 'carrierwave', '~> 1.0'
 gem 'fog'
 gem 'mini_magick'
