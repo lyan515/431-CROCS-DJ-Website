@@ -24,7 +24,7 @@ git clone git@github.com:lyan515/431-CROCS-DJ-Website.git
    ii. In db/seeds.rb, change the welcome_ids of the dj portfolio seeds to be 1 instead of 4
    iii. In app/uploaders/avatar_uploader.rb, switch storage to :file for localserver use, and fog for heroku use
    
-6.) Run rails server -p $PORT -b $IP to start the app. Cloud9 will pop up a window showing the URL to visit in your browser to interact with the running app.
+6. Run rails server -p $PORT -b $IP to start the app. Cloud9 will pop up a window showing the URL to visit in your browser to interact with the running app.
 
 # Other important commands
 
