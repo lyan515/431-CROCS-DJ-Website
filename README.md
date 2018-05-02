@@ -31,6 +31,20 @@ git clone git@github.com:lyan515/431-CROCS-DJ-Website.git
 If you make any changes to the database you need to run the command: rake db:migrate
 If you want to seed the database you need to run the command: rake db:seed
 
+# AWS migration note
 
+In order for image uploading to work on heroku, you need to use AWS S3 storage. Because it is bad practice to expose your keys, we have decided to not push our active keys. Therefore, if you want to push to heroku successfully, you will need to create a new AWS account.
+
+Heroku configures the public assets folder as read only, so in order to store uploaded DJ portfolio images, you need to use S3 storage
+
+# AWS steps
+
+1. [Create a free AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+
+2. [Follow the steps in this tutorial](https://devcenter.heroku.com/articles/s3) to set up the environment for S3 deployment in Heroku
+
+3. Using the keys generated in step 2 and the name of you S3 bucket, go to config/initializers/carrier_wave.rb to fill in the essential AWS information into the file. 
+  a. DO NOT PUSH THIS INFO INTO GITHUB, it poses a huge security risk, and your AWS account may become compromised
+4. For our configurtration, it we needed to go to our bucket settings in AWS and set the bucket to public, you may want to research this in your future implementation.
 
 
